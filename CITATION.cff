@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "sorting-fhe: Optimized Rank Sort for Encrypted Real Numbers"
+authors:
+  - family-names: Kim
+    given-names: Seunghu
+  - family-names: Ünay
+    given-names: Eymen
+  - family-names: Yilmazer-Metin
+    given-names: Ayse
+  - family-names: Lee
+    given-names: Hyung Tae
+repository-code: "https://github.com/oksuman/sorting-fhe"
+url: "https://eprint.iacr.org/2025/1170"
+license: MIT
+preferred-citation:
+  type: article
+  title: "Optimized Rank Sort for Encrypted Real Numbers"
+  authors:
+    - family-names: Kim
+      given-names: Seunghu
+    - family-names: Ünay
+      given-names: Eymen
+    - family-names: Yilmazer-Metin
+      given-names: Ayse
+    - family-names: Lee
+      given-names: Hyung Tae
+  year: 2025
+  url: "https://eprint.iacr.org/2025/1170"
