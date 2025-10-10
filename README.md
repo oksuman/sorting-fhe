@@ -23,6 +23,12 @@ In addition, the repository includes implementations sorting methods from:
 - CMake ≥ 3.5
 - Git
 - OpenFHE library
+- OpenMP
+
+On Ubuntu most of the required packages can be installed with:
+```bash
+sudo apt update && sudo apt install -y clang libomp-dev cmake git build-essential
+```
 
 ### Installing OpenFHE
 
@@ -39,8 +45,8 @@ To install the OpenFHE library, refer to:
 git clone --recursive https://github.com/oksuman/sorting-fhe.git
 cd sorting-fhe
 mkdir build && cd build
-cmake ..
-make
+cmake -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang ..
+make -j
 ```
 
 ## Running Tests
@@ -48,7 +54,7 @@ make
 After building:
 
 ```bash
-./DirectSortTest              # Run an unit test
+./DirectSortTest              # Run a unit test
 ```
 
 ## Benchmarking & Experiments
