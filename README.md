@@ -22,7 +22,7 @@ In addition, the repository includes implementations sorting methods from:
 - C++ (g++ ≥ 9.4.0)
 - CMake ≥ 3.5
 - Git
-- OpenFHE library
+- OpenFHE library == 1.1.4
 - OpenMP
 
 On Ubuntu most of the required packages can be installed with:
