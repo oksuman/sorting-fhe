@@ -10,6 +10,7 @@
 
 #include "comparison.h"
 #include "encryption.h"
+#include "memory_tracker.h"
 #include "openfhe.h"
 #include "sign.h"
 #include "sort_algo.h"
@@ -168,6 +169,9 @@ TYPED_TEST_P(HybridSortTestFixture, SortHybridTest) {
     std::cout << "Sign Configuration: CompositeSign(" << Cfg.compos.n << ", "
               << Cfg.compos.dg << ", " << Cfg.compos.df << ")" << std::endl;
 
+    double setupMemoryGB = MemoryMonitor::getMemoryUsageGB();
+    MemoryMonitor memMonitor(500);
+
     // Start timing
     auto start = std::chrono::high_resolution_clock::now();
 
@@ -207,9 +211,17 @@ TYPED_TEST_P(HybridSortTestFixture, SortHybridTest) {
 
     double avgError = totalError / output_array.size();
 
-    // Print results to console
+    double peakMemoryGB = memMonitor.getPeakMemoryGB();
+    double avgMemoryGB = memMonitor.getAverageMemoryGB();
+    double overheadMemoryGB = peakMemoryGB - setupMemoryGB;
+
     std::cout << "\nPerformance Analysis:" << std::endl;
     std::cout << "Execution time: " << duration.count() << " ms" << std::endl;
+    std::cout << "\nMemory Analysis:" << std::endl;
+    std::cout << "Setup Memory (GB): " << setupMemoryGB << std::endl;
+    std::cout << "Peak Memory (GB): " << peakMemoryGB << std::endl;
+    std::cout << "Average Memory (GB): " << avgMemoryGB << std::endl;
+    std::cout << "Memory Overhead (GB): " << overheadMemoryGB << std::endl;
     std::cout << "\nError Analysis:" << std::endl;
     std::cout << "Maximum error: " << maxError
               << " (log2: " << std::log2(maxError) << ")" << std::endl;

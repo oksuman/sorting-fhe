@@ -52,16 +52,18 @@ add_unit_test(BitonicSortTest
 )
 add_dependencies(BitonicSortTest generate_coeffs_target)
 
-add_unit_test(DirectSortTest 
-    DirectSortTest.cpp 
+add_unit_test(DirectSortTest
+    DirectSortTest.cpp
+    memory_tracker.cpp
     ${CMAKE_SOURCE_DIR}/src/sign.cpp
     ${CMAKE_SOURCE_DIR}/src/comparison.cpp
     ${CMAKE_SOURCE_DIR}/src/encryption.cpp
 )
 add_dependencies(DirectSortTest generate_coeffs_target)
 
-add_unit_test(DirectSortHTest 
-    DirectSortHTest.cpp 
+add_unit_test(DirectSortHTest
+    DirectSortHTest.cpp
+    memory_tracker.cpp
     ${CMAKE_SOURCE_DIR}/src/sign.cpp
     ${CMAKE_SOURCE_DIR}/src/comparison.cpp
     ${CMAKE_SOURCE_DIR}/src/encryption.cpp

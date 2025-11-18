@@ -74,6 +74,10 @@ format_results() {
     local times=()
     local max_err_logs=()
     local avg_err_logs=()
+    local setup_mems=()
+    local peak_mems=()
+    local avg_mems=()
+    local overhead_mems=()
 
     local found_results=false
 
@@ -104,6 +108,11 @@ format_results() {
             local max_err_log=$(grep -m1 "Maximum error:" "$result_file" | awk -F'log2: ' '{print $2}' | tr -d ')')
             local avg_err_log=$(grep -m1 "Average error:" "$result_file" | awk -F'log2: ' '{print $2}' | tr -d ')')
 
+            local setup_mem=$(grep -m1 "Setup Memory (GB):" "$result_file" | awk '{print $4}')
+            local peak_mem=$(grep -m1 "Peak Memory (GB):" "$result_file" | awk '{print $4}')
+            local avg_mem=$(grep -m1 "Average Memory (GB):" "$result_file" | awk '{print $4}')
+            local overhead_mem=$(grep -m1 "Memory Overhead (GB):" "$result_file" | awk '{print $4}')
+
             if [[ "$max_err_log" != "N/A" && "$max_err_log" =~ ^-?[0-9]+(\.[0-9]+)?$ ]]; then
                 max_err_logs+=($max_err_log)
             fi
@@ -114,6 +123,19 @@ format_results() {
 
             if [[ -n "$time" ]]; then
                 times+=($time)
+            fi
+
+            if [[ -n "$setup_mem" && "$setup_mem" =~ ^[0-9]+(\.[0-9]+)?$ ]]; then
+                setup_mems+=($setup_mem)
+            fi
+            if [[ -n "$peak_mem" && "$peak_mem" =~ ^[0-9]+(\.[0-9]+)?$ ]]; then
+                peak_mems+=($peak_mem)
+            fi
+            if [[ -n "$avg_mem" && "$avg_mem" =~ ^[0-9]+(\.[0-9]+)?$ ]]; then
+                avg_mems+=($avg_mem)
+            fi
+            if [[ -n "$overhead_mem" && "$overhead_mem" =~ ^[0-9]+(\.[0-9]+)?$ ]]; then
+                overhead_mems+=($overhead_mem)
             fi
         fi
     done
@@ -132,6 +154,10 @@ format_results() {
     local avg_time="N/A"
     local avg_max_err_log="N/A"
     local avg_avg_err_log="N/A"
+    local avg_setup_mem="N/A"
+    local avg_peak_mem="N/A"
+    local avg_avg_mem="N/A"
+    local avg_overhead_mem="N/A"
 
     if [[ $n_trials -gt 0 ]]; then
         local total_time=0
@@ -161,6 +187,38 @@ format_results() {
         avg_avg_err_log=$(echo "scale=4; $log_sum / ${#avg_err_logs[@]}" | bc -l)
     fi
 
+    if [[ ${#setup_mems[@]} -gt 0 ]]; then
+        local mem_sum=0
+        for mem_val in "${setup_mems[@]}"; do
+            mem_sum=$(echo "$mem_sum + $mem_val" | bc -l)
+        done
+        avg_setup_mem=$(echo "scale=4; $mem_sum / ${#setup_mems[@]}" | bc -l)
+    fi
+
+    if [[ ${#peak_mems[@]} -gt 0 ]]; then
+        local mem_sum=0
+        for mem_val in "${peak_mems[@]}"; do
+            mem_sum=$(echo "$mem_sum + $mem_val" | bc -l)
+        done
+        avg_peak_mem=$(echo "scale=4; $mem_sum / ${#peak_mems[@]}" | bc -l)
+    fi
+
+    if [[ ${#avg_mems[@]} -gt 0 ]]; then
+        local mem_sum=0
+        for mem_val in "${avg_mems[@]}"; do
+            mem_sum=$(echo "$mem_sum + $mem_val" | bc -l)
+        done
+        avg_avg_mem=$(echo "scale=4; $mem_sum / ${#avg_mems[@]}" | bc -l)
+    fi
+
+    if [[ ${#overhead_mems[@]} -gt 0 ]]; then
+        local mem_sum=0
+        for mem_val in "${overhead_mems[@]}"; do
+            mem_sum=$(echo "$mem_sum + $mem_val" | bc -l)
+        done
+        avg_overhead_mem=$(echo "scale=4; $mem_sum / ${#overhead_mems[@]}" | bc -l)
+    fi
+
     echo "======================================" > "$summary_file"
     echo "     Results for N = $size" >> "$summary_file"
     echo "======================================" >> "$summary_file"
@@ -172,6 +230,12 @@ format_results() {
     echo "" >> "$summary_file"
     echo "Performance Metrics:" >> "$summary_file"
     echo "  Average Time     : ${avg_time}s" >> "$summary_file"
+    echo "" >> "$summary_file"
+    echo "Memory Metrics:" >> "$summary_file"
+    echo "  Setup Memory     : ${avg_setup_mem} GB" >> "$summary_file"
+    echo "  Peak Memory      : ${avg_peak_mem} GB" >> "$summary_file"
+    echo "  Average Memory   : ${avg_avg_mem} GB" >> "$summary_file"
+    echo "  Memory Overhead  : ${avg_overhead_mem} GB" >> "$summary_file"
     echo "" >> "$summary_file"
     echo "Error Analysis:" >> "$summary_file"
     echo "  Max Error (log2): $avg_max_err_log" >> "$summary_file"
