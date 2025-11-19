@@ -5,6 +5,7 @@
 #include <vector>
 
 #include "../utils.h"
+#include "../memory_tracker.h"
 #include "encryption.h"
 #include "kway_adapter.h"
 
@@ -123,6 +124,10 @@ TYPED_TEST(KWaySortTestFixture, SortTest) {
         this->m_cc, this->m_publicKey, this->m_privateKey, this->m_enc, k, M);
 
     auto Cfg = SignConfig(CompositeSignConfig(3, d_f, d_g), this->m_multDepth);
+
+    double setupMemoryGB = MemoryMonitor::getMemoryUsageGB();
+    MemoryMonitor memMonitor(500);
+
     auto start = std::chrono::high_resolution_clock::now();
     Ciphertext<DCRTPoly> ctxt_out =
         kwaySorter->sort(ctxt, SignFunc::CompositeSign, Cfg);
@@ -154,8 +159,17 @@ TYPED_TEST(KWaySortTestFixture, SortTest) {
 
     double avgError = totalError / effectiveOutputSize;
 
+    double peakMemoryGB = memMonitor.getPeakMemoryGB();
+    double avgMemoryGB = memMonitor.getAverageMemoryGB();
+    double overheadMemoryGB = peakMemoryGB - setupMemoryGB;
+
     std::cout << "\nPerformance Analysis:" << std::endl;
     std::cout << "Execution time: " << duration.count() << " ms" << std::endl;
+    std::cout << "\nMemory Analysis:" << std::endl;
+    std::cout << "Setup Memory (GB): " << setupMemoryGB << std::endl;
+    std::cout << "Peak Memory (GB): " << peakMemoryGB << std::endl;
+    std::cout << "Average Memory (GB): " << avgMemoryGB << std::endl;
+    std::cout << "Memory Overhead (GB): " << overheadMemoryGB << std::endl;
     std::cout << "\nError Analysis:" << std::endl;
     std::cout << "Maximum error: " << maxError
               << " (log2: " << std::log2(maxError) << ")" << std::endl;

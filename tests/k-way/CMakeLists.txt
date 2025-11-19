@@ -32,8 +32,9 @@ add_kway_unit_test(KWaySort235Test
     ${CMAKE_SOURCE_DIR}/src/k-way/SortUtils.cpp
     ${CMAKE_SOURCE_DIR}/src/k-way/Masking.cpp)
 
-add_kway_unit_test(KWaySort2Test 
-    KWaySort2Test.cpp 
+add_kway_unit_test(KWaySort2Test
+    KWaySort2Test.cpp
+    ../memory_tracker.cpp
     ${CMAKE_SOURCE_DIR}/src/encryption.cpp
     ${CMAKE_SOURCE_DIR}/src/sign.cpp
     ${CMAKE_SOURCE_DIR}/src/comparison.cpp
@@ -42,8 +43,9 @@ add_kway_unit_test(KWaySort2Test
     ${CMAKE_SOURCE_DIR}/src/k-way/SortUtils.cpp
     ${CMAKE_SOURCE_DIR}/src/k-way/Masking.cpp)
 
-add_kway_unit_test(KWaySort3Test 
-    KWaySort3Test.cpp 
+add_kway_unit_test(KWaySort3Test
+    KWaySort3Test.cpp
+    ../memory_tracker.cpp
     ${CMAKE_SOURCE_DIR}/src/encryption.cpp
     ${CMAKE_SOURCE_DIR}/src/sign.cpp
     ${CMAKE_SOURCE_DIR}/src/comparison.cpp
@@ -52,8 +54,9 @@ add_kway_unit_test(KWaySort3Test
     ${CMAKE_SOURCE_DIR}/src/k-way/SortUtils.cpp
     ${CMAKE_SOURCE_DIR}/src/k-way/Masking.cpp)
 
-add_kway_unit_test(KWaySort5Test 
-    KWaySort5Test.cpp 
+add_kway_unit_test(KWaySort5Test
+    KWaySort5Test.cpp
+    ../memory_tracker.cpp
     ${CMAKE_SOURCE_DIR}/src/encryption.cpp
     ${CMAKE_SOURCE_DIR}/src/sign.cpp
     ${CMAKE_SOURCE_DIR}/src/comparison.cpp
