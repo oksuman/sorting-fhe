@@ -48,7 +48,7 @@ class EvalUtils {
 
     // Wrappers for ciphertext negation and masking
     void flipCtxt(Ciphertext<DCRTPoly> &ctxt);
-    void flipCtxt(Ciphertext<DCRTPoly> &ctxt, const Plaintext &mask);
+    void flipCtxt(Ciphertext<DCRTPoly> &ctxt, Plaintext &mask);
 
     // General odd polynomial evaluation for degree 7 or 9
     void evalPoly(Ciphertext<DCRTPoly> &ctxt, const std::vector<long> &coeff,

@@ -70,6 +70,18 @@ add_unit_test(DirectSortHTest
 )
 add_dependencies(DirectSortHTest generate_coeffs_target)
 
+add_unit_test(DirectSortH1Test DirectSortH1Test.cpp memory_tracker.cpp
+    ${CMAKE_SOURCE_DIR}/src/sign.cpp
+    ${CMAKE_SOURCE_DIR}/src/comparison.cpp
+    ${CMAKE_SOURCE_DIR}/src/encryption.cpp)
+add_dependencies(DirectSortH1Test generate_coeffs_target)
+
+add_unit_test(DirectSortH2Test DirectSortH2Test.cpp memory_tracker.cpp
+    ${CMAKE_SOURCE_DIR}/src/sign.cpp
+    ${CMAKE_SOURCE_DIR}/src/comparison.cpp
+    ${CMAKE_SOURCE_DIR}/src/encryption.cpp)
+add_dependencies(DirectSortH2Test generate_coeffs_target)
+
 add_unit_test(DirectSortNTest 
     DirectSortNTest.cpp 
     ${CMAKE_SOURCE_DIR}/src/sign.cpp

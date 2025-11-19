@@ -958,6 +958,7 @@ template <int N> class DirectSort : public SortBase<N> {
 
                 auto subMasked = this->getZero()->Clone();
                 subMasked->SetSlots(num_slots);
+
                 for (size_t k = 0; k < num_batch; k++) {
                     auto rotationMask =
                         m_cc->EvalSub(subMaskPtxs[b], rots_Rank[k]);
@@ -1062,6 +1063,331 @@ template <int N> class DirectSort : public SortBase<N> {
 
         return output_array;
     }
+
+    Ciphertext<DCRTPoly>
+    rotationIndexCheckHybrid1(const Ciphertext<DCRTPoly> &ctx_Rank,
+                            const Ciphertext<DCRTPoly> &input_array,
+                            PrivateKey<DCRTPoly> sk) {
+
+        size_t maxArraySize = 256;
+        size_t num_slots;
+        size_t num_batch;
+
+        if (N > maxArraySize) {
+            num_slots = max_batch;
+            num_batch = N / maxArraySize;
+        } else {
+            num_slots = N * N;
+            num_batch = 1;
+        }
+
+        ctx_Rank->SetSlots(num_slots);
+        input_array->SetSlots(num_slots);
+
+        std::vector<std::vector<double>> subMasks(
+            num_batch, std::vector<double>(num_slots));
+
+        auto array_size = std::min(static_cast<size_t>(N), maxArraySize);
+#pragma omp parallel for collapse(3)
+        for (size_t b = 0; b < num_batch; b++) {
+            for (size_t i = 0; i < array_size; i++) {
+                for (size_t j = 0; j < array_size; j++) {
+                    subMasks[b][i * array_size + j] =
+                        static_cast<double>(b * array_size + i);
+                        // / static_cast<double>(N);
+                }
+            }
+        }
+        std::vector<Plaintext> subMaskPtxs(num_batch);
+        std::vector<Ciphertext<DCRTPoly>> rots_Rank(num_batch);
+        std::vector<Ciphertext<DCRTPoly>> rots_Input(num_batch);
+
+#pragma omp parallel sections
+        {
+#pragma omp section
+            {
+#pragma omp parallel for
+                for (size_t b = 0; b < num_batch; b++) {
+                    rots_Rank[b] = rot.rotate(ctx_Rank, b * maxArraySize);
+                }
+            }
+
+#pragma omp section
+            {
+#pragma omp parallel for
+                for (size_t b = 0; b < num_batch; b++) {
+                    rots_Input[b] = rot.rotate(input_array, b * maxArraySize);
+                }
+            }
+        }
+
+        std::vector<Ciphertext<DCRTPoly>> Masked(num_batch);
+
+        uint32_t dg_i = (log2(N) + 1) / 2;
+        uint32_t df_i = 2;
+
+        if constexpr (N <= 256) {
+            for (size_t b = 0; b < num_batch; b++) {
+
+                subMaskPtxs[b] = m_cc->MakeCKKSPackedPlaintext(
+                    subMasks[b], 1, ctx_Rank->GetLevel(), nullptr, num_slots);
+
+                auto subMasked = this->getZero()->Clone();
+                subMasked->SetSlots(num_slots);
+
+                for (size_t k = 0; k < num_batch; k++) {
+                    auto rotationMask =
+                        m_cc->EvalSub(subMaskPtxs[b], rots_Rank[k]);
+
+                    rotationMask =
+                        mehp24::utils::indicatorAdv(rotationMask, N,
+                                                    dg_i, df_i);
+
+                    subMasked = m_cc->EvalAdd(
+                        subMasked, m_cc->EvalMult(rots_Input[k], rotationMask));
+                }
+
+                subMasked = sumColumnsToTarget(subMasked, N / num_batch, b, true);
+                Masked[b] =
+                    transposeColumnTarget(subMasked, N / num_batch, b, true);
+            }
+        } else if constexpr (N == 512) {
+#pragma omp parallel for num_threads(4)
+            for (size_t b = 0; b < num_batch; b++) {
+
+                subMaskPtxs[b] = m_cc->MakeCKKSPackedPlaintext(
+                    subMasks[b], 1, ctx_Rank->GetLevel(), nullptr, num_slots);
+
+                auto subMasked = this->getZero()->Clone();
+                subMasked->SetSlots(num_slots);
+
+                for (size_t k = 0; k < num_batch; k++) {
+                    auto rotationMask =
+                        m_cc->EvalSub(subMaskPtxs[b], rots_Rank[k]);
+
+                    rotationMask =
+                        mehp24::utils::indicatorAdv(rotationMask, N,
+                                                    dg_i, df_i);
+
+                    subMasked = m_cc->EvalAdd(
+                        subMasked, m_cc->EvalMult(rots_Input[k], rotationMask));
+                }
+
+                subMasked = sumColumnsToTarget(subMasked, N / num_batch, b, true);
+                Masked[b] =
+                    transposeColumnTarget(subMasked, N / num_batch, b, true);
+            }
+        } else if constexpr (N == 1024) {
+#pragma omp parallel for num_threads(16)
+            for (size_t b = 0; b < num_batch; b++) {
+
+                subMaskPtxs[b] = m_cc->MakeCKKSPackedPlaintext(
+                    subMasks[b], 1, ctx_Rank->GetLevel(), nullptr, num_slots);
+
+                auto subMasked = this->getZero()->Clone();
+                subMasked->SetSlots(num_slots);
+
+                for (size_t k = 0; k < num_batch; k++) {
+                    auto rotationMask =
+                        m_cc->EvalSub(subMaskPtxs[b], rots_Rank[k]);
+
+                    rotationMask =
+                        mehp24::utils::indicatorAdv(rotationMask, N,
+                                                    dg_i, df_i);
+
+                    subMasked = m_cc->EvalAdd(
+                        subMasked, m_cc->EvalMult(rots_Input[k], rotationMask));
+                }
+
+                subMasked = sumColumnsToTarget(subMasked, N / num_batch, b, true);
+                Masked[b] =
+                    transposeColumnTarget(subMasked, N / num_batch, b, true);
+            }
+        }
+
+        auto result = m_cc->EvalAddMany(Masked);
+        return result;
+    }
+
+
+
+    Ciphertext<DCRTPoly>
+    sort_hybrid1(const Ciphertext<DCRTPoly> &input_array,
+                SignFunc SignFunc, SignConfig &Cfg,
+                PrivateKey<DCRTPoly> sk) {
+
+        omp_set_nested(1);
+        omp_set_max_active_levels(2);
+
+        Ciphertext<DCRTPoly> ctx_Rank;
+        ctx_Rank = constructRank(input_array, SignFunc, Cfg);
+
+        Ciphertext<DCRTPoly> output_array =
+            rotationIndexCheckHybrid1(ctx_Rank, input_array, sk);
+
+        return output_array;
+    }
+
+
+    Ciphertext<DCRTPoly>
+    rotationIndexCheckHybrid2(const Ciphertext<DCRTPoly> &ctx_Rank,
+                            const Ciphertext<DCRTPoly> &input_array,
+                            PrivateKey<DCRTPoly> sk) {
+
+        size_t maxArraySize = 256;
+        size_t num_slots;
+        size_t num_batch;
+
+        if (N > maxArraySize) {
+            num_slots = max_batch;
+            num_batch = N / maxArraySize;
+        } else {
+            num_slots = N * N;
+            num_batch = 1;
+        }
+
+        ctx_Rank->SetSlots(num_slots);
+        auto r = m_cc->EvalMult(ctx_Rank, 1.0 / N);
+        input_array->SetSlots(num_slots);
+
+        std::vector<std::vector<double>> subMasks(
+            num_batch, std::vector<double>(num_slots));
+
+        auto array_size = std::min(static_cast<size_t>(N), maxArraySize);
+    #pragma omp parallel for collapse(3)
+        for (size_t b = 0; b < num_batch; b++) {
+            for (size_t i = 0; i < array_size; i++) {
+                for (size_t j = 0; j < array_size; j++) {
+                    subMasks[b][i * array_size + j] =
+                        static_cast<double>(b * array_size + i) /
+                        static_cast<double>(N);
+                }
+            }
+        }
+        std::vector<Plaintext> subMaskPtxs(num_batch);
+        std::vector<Ciphertext<DCRTPoly>> rots_Rank(num_batch);
+        std::vector<Ciphertext<DCRTPoly>> rots_Input(num_batch);
+
+    #pragma omp parallel sections
+        {
+    #pragma omp section
+            {
+    #pragma omp parallel for
+                for (size_t b = 0; b < num_batch; b++) {
+                    rots_Rank[b] = rot.rotate(r, b * maxArraySize);
+                }
+            }
+
+    #pragma omp section
+            {
+    #pragma omp parallel for
+                for (size_t b = 0; b < num_batch; b++) {
+                    rots_Input[b] = rot.rotate(input_array, b * maxArraySize);
+                }
+            }
+        }
+
+        std::vector<Ciphertext<DCRTPoly>> Masked(num_batch);
+
+        if constexpr (N <= 256) {
+            for (size_t b = 0; b < num_batch; b++) {
+
+                subMaskPtxs[b] = m_cc->MakeCKKSPackedPlaintext(
+                    subMasks[b], 1, ctx_Rank->GetLevel(), nullptr, num_slots);
+
+                auto subMasked = this->getZero()->Clone();
+                subMasked->SetSlots(num_slots);
+
+                for (size_t k = 0; k < num_batch; k++) {
+                    auto rotationMask =
+                        m_cc->EvalSub(subMaskPtxs[b], rots_Rank[k]);
+
+                    static const auto &sincCoefficients =
+                        selectCoefficients<N>();
+                    rotationMask = m_cc->EvalChebyshevSeriesPS(
+                        rotationMask, sincCoefficients, -1, 1);
+
+                    subMasked = m_cc->EvalAdd(
+                        subMasked, m_cc->EvalMult(rots_Input[k], rotationMask));
+                }
+
+                subMasked = sumColumnsToTarget(subMasked, N / num_batch, b, true);
+                Masked[b] =
+                    transposeColumnTarget(subMasked, N / num_batch, b, true);
+            }
+        } else if constexpr (N == 512) {
+    #pragma omp parallel for num_threads(4)
+            for (size_t b = 0; b < num_batch; b++) {
+
+                subMaskPtxs[b] = m_cc->MakeCKKSPackedPlaintext(
+                    subMasks[b], 1, ctx_Rank->GetLevel(), nullptr, num_slots);
+
+                auto subMasked = this->getZero()->Clone();
+                subMasked->SetSlots(num_slots);
+                for (size_t k = 0; k < num_batch; k++) {
+                    auto rotationMask =
+                        m_cc->EvalSub(subMaskPtxs[b], rots_Rank[k]);
+
+                    static const auto &sincCoefficients =
+                        selectCoefficients<N>();
+                    rotationMask = m_cc->EvalChebyshevSeriesPS(
+                        rotationMask, sincCoefficients, -1, 1);
+
+                    subMasked = m_cc->EvalAdd(
+                        subMasked, m_cc->EvalMult(rots_Input[k], rotationMask));
+                }
+
+                subMasked = sumColumnsToTarget(subMasked, N / num_batch, b, true);
+                Masked[b] =
+                    transposeColumnTarget(subMasked, N / num_batch, b, true);
+            }
+        } else if constexpr (N == 1024) {
+    #pragma omp parallel for num_threads(16)
+            for (size_t b = 0; b < num_batch; b++) {
+
+                subMaskPtxs[b] = m_cc->MakeCKKSPackedPlaintext(
+                    subMasks[b], 1, ctx_Rank->GetLevel(), nullptr, num_slots);
+
+                auto subMasked = this->getZero()->Clone();
+                subMasked->SetSlots(num_slots);
+                for (size_t k = 0; k < num_batch; k++) {
+                    auto rotationMask =
+                        m_cc->EvalSub(subMaskPtxs[b], rots_Rank[k]);
+
+                    static const auto &sincCoefficients =
+                        selectCoefficients<N>();
+                    rotationMask = m_cc->EvalChebyshevSeriesPS(
+                        rotationMask, sincCoefficients, -1, 1);
+
+                    subMasked = m_cc->EvalAdd(
+                        subMasked, m_cc->EvalMult(rots_Input[k], rotationMask));
+                }
+
+                subMasked = sumColumnsToTarget(subMasked, N / num_batch, b, true);
+                Masked[b] =
+                    transposeColumnTarget(subMasked, N / num_batch, b, true);
+            }
+        }
+        auto result = m_cc->EvalAddMany(Masked);
+        return result;
+    }
+
+    Ciphertext<DCRTPoly> sort_hybrid2(const Ciphertext<DCRTPoly> &input_array,
+                                    SignFunc SignFunc, SignConfig &Cfg,
+                                    PrivateKey<DCRTPoly> sk) {
+
+        omp_set_nested(1);
+        omp_set_max_active_levels(2);
+
+        Ciphertext<DCRTPoly> ctx_Rank;
+        ctx_Rank = constructRank(input_array, SignFunc, Cfg);
+
+        Ciphertext<DCRTPoly> output_array =
+            rotationIndexCheckHybrid2(ctx_Rank, input_array, sk);
+
+        return output_array;
+    }
+
 };
 
 template <int N> class BitonicSort : public SortBase<N> {

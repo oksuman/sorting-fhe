@@ -98,7 +98,7 @@ void EvalUtils::flipCtxt(Ciphertext<DCRTPoly> &ctxt) {
     m_cc->EvalAddInPlace(ctxt, 1.0);
 }
 
-void EvalUtils::flipCtxt(Ciphertext<DCRTPoly> &ctxt, const Plaintext &mask) {
+void EvalUtils::flipCtxt(Ciphertext<DCRTPoly> &ctxt, Plaintext &mask) {
     m_cc->EvalNegateInPlace(ctxt);
     m_cc->EvalAddInPlace(ctxt, mask);
 }
