@@ -104,6 +104,9 @@ TYPED_TEST_SUITE_P(MEHPSortTestFixture);
 
 TYPED_TEST_P(MEHPSortTestFixture, SortFGTest) {
     constexpr size_t N = TypeParam::value;
+
+    double idleMemoryGB = MemoryMonitor::getMemoryUsageGB();
+
     std::vector<double> inputArray =
         getVectorWithMinDiff(N, 0, 1, 1 / (double)N);
 
@@ -175,15 +178,18 @@ TYPED_TEST_P(MEHPSortTestFixture, SortFGTest) {
 
     double peakMemoryGB = memMonitor.getPeakMemoryGB();
     double avgMemoryGB = memMonitor.getAverageMemoryGB();
-    double overheadMemoryGB = peakMemoryGB - setupMemoryGB;
+    double cryptoOverheadGB = setupMemoryGB - idleMemoryGB;
+    double sortingOverheadGB = peakMemoryGB - setupMemoryGB;
 
     std::cout << "\nPerformance Analysis:" << std::endl;
     std::cout << "Execution time: " << duration << " ms" << std::endl;
     std::cout << "\nMemory Analysis:" << std::endl;
+    std::cout << "Idle Memory (GB): " << idleMemoryGB << std::endl;
     std::cout << "Setup Memory (GB): " << setupMemoryGB << std::endl;
     std::cout << "Peak Memory (GB): " << peakMemoryGB << std::endl;
     std::cout << "Average Memory (GB): " << avgMemoryGB << std::endl;
-    std::cout << "Memory Overhead (GB): " << overheadMemoryGB << std::endl;
+    std::cout << "Crypto Overhead (GB): " << cryptoOverheadGB << std::endl;
+    std::cout << "Sorting Overhead (GB): " << sortingOverheadGB << std::endl;
     std::cout << "\nError Analysis:" << std::endl;
     std::cout << "Maximum error: " << maxError
               << " (log2: " << std::log2(maxError) << ")" << std::endl;

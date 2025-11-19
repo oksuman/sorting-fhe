@@ -74,10 +74,12 @@ format_results() {
     local times=()
     local max_err_logs=()
     local avg_err_logs=()
+    local idle_mems=()
     local setup_mems=()
     local peak_mems=()
     local avg_mems=()
-    local overhead_mems=()
+    local crypto_overhead_mems=()
+    local sorting_overhead_mems=()
 
     local found_results=false
 
@@ -108,10 +110,12 @@ format_results() {
             local max_err_log=$(grep -m1 "Maximum error:" "$result_file" | awk -F'log2: ' '{print $2}' | tr -d ')')
             local avg_err_log=$(grep -m1 "Average error:" "$result_file" | awk -F'log2: ' '{print $2}' | tr -d ')')
 
+            local idle_mem=$(grep -m1 "Idle Memory (GB):" "$result_file" | awk '{print $4}')
             local setup_mem=$(grep -m1 "Setup Memory (GB):" "$result_file" | awk '{print $4}')
             local peak_mem=$(grep -m1 "Peak Memory (GB):" "$result_file" | awk '{print $4}')
             local avg_mem=$(grep -m1 "Average Memory (GB):" "$result_file" | awk '{print $4}')
-            local overhead_mem=$(grep -m1 "Memory Overhead (GB):" "$result_file" | awk '{print $4}')
+            local crypto_overhead_mem=$(grep -m1 "Crypto Overhead (GB):" "$result_file" | awk '{print $4}')
+            local sorting_overhead_mem=$(grep -m1 "Sorting Overhead (GB):" "$result_file" | awk '{print $4}')
 
             if [[ "$max_err_log" != "N/A" && "$max_err_log" =~ ^-?[0-9]+(\.[0-9]+)?$ ]]; then
                 max_err_logs+=($max_err_log)
@@ -125,6 +129,9 @@ format_results() {
                 times+=($time)
             fi
 
+            if [[ -n "$idle_mem" && "$idle_mem" =~ ^[0-9]+(\.[0-9]+)?$ ]]; then
+                idle_mems+=($idle_mem)
+            fi
             if [[ -n "$setup_mem" && "$setup_mem" =~ ^[0-9]+(\.[0-9]+)?$ ]]; then
                 setup_mems+=($setup_mem)
             fi
@@ -134,8 +141,11 @@ format_results() {
             if [[ -n "$avg_mem" && "$avg_mem" =~ ^[0-9]+(\.[0-9]+)?$ ]]; then
                 avg_mems+=($avg_mem)
             fi
-            if [[ -n "$overhead_mem" && "$overhead_mem" =~ ^[0-9]+(\.[0-9]+)?$ ]]; then
-                overhead_mems+=($overhead_mem)
+            if [[ -n "$crypto_overhead_mem" && "$crypto_overhead_mem" =~ ^[0-9]+(\.[0-9]+)?$ ]]; then
+                crypto_overhead_mems+=($crypto_overhead_mem)
+            fi
+            if [[ -n "$sorting_overhead_mem" && "$sorting_overhead_mem" =~ ^[0-9]+(\.[0-9]+)?$ ]]; then
+                sorting_overhead_mems+=($sorting_overhead_mem)
             fi
         fi
     done
@@ -154,10 +164,12 @@ format_results() {
     local avg_time="N/A"
     local avg_max_err_log="N/A"
     local avg_avg_err_log="N/A"
+    local avg_idle_mem="N/A"
     local avg_setup_mem="N/A"
     local avg_peak_mem="N/A"
     local avg_avg_mem="N/A"
-    local avg_overhead_mem="N/A"
+    local avg_crypto_overhead_mem="N/A"
+    local avg_sorting_overhead_mem="N/A"
 
     if [[ $n_trials -gt 0 ]]; then
         local total_time=0
@@ -187,6 +199,14 @@ format_results() {
         avg_avg_err_log=$(echo "scale=4; $log_sum / ${#avg_err_logs[@]}" | bc -l)
     fi
 
+    if [[ ${#idle_mems[@]} -gt 0 ]]; then
+        local mem_sum=0
+        for mem_val in "${idle_mems[@]}"; do
+            mem_sum=$(echo "$mem_sum + $mem_val" | bc -l)
+        done
+        avg_idle_mem=$(echo "scale=4; $mem_sum / ${#idle_mems[@]}" | bc -l)
+    fi
+
     if [[ ${#setup_mems[@]} -gt 0 ]]; then
         local mem_sum=0
         for mem_val in "${setup_mems[@]}"; do
@@ -211,12 +231,20 @@ format_results() {
         avg_avg_mem=$(echo "scale=4; $mem_sum / ${#avg_mems[@]}" | bc -l)
     fi
 
-    if [[ ${#overhead_mems[@]} -gt 0 ]]; then
+    if [[ ${#crypto_overhead_mems[@]} -gt 0 ]]; then
         local mem_sum=0
-        for mem_val in "${overhead_mems[@]}"; do
+        for mem_val in "${crypto_overhead_mems[@]}"; do
             mem_sum=$(echo "$mem_sum + $mem_val" | bc -l)
         done
-        avg_overhead_mem=$(echo "scale=4; $mem_sum / ${#overhead_mems[@]}" | bc -l)
+        avg_crypto_overhead_mem=$(echo "scale=4; $mem_sum / ${#crypto_overhead_mems[@]}" | bc -l)
+    fi
+
+    if [[ ${#sorting_overhead_mems[@]} -gt 0 ]]; then
+        local mem_sum=0
+        for mem_val in "${sorting_overhead_mems[@]}"; do
+            mem_sum=$(echo "$mem_sum + $mem_val" | bc -l)
+        done
+        avg_sorting_overhead_mem=$(echo "scale=4; $mem_sum / ${#sorting_overhead_mems[@]}" | bc -l)
     fi
 
     echo "======================================" > "$summary_file"
@@ -232,10 +260,12 @@ format_results() {
     echo "  Average Time     : ${avg_time}s" >> "$summary_file"
     echo "" >> "$summary_file"
     echo "Memory Metrics:" >> "$summary_file"
-    echo "  Setup Memory     : ${avg_setup_mem} GB" >> "$summary_file"
-    echo "  Peak Memory      : ${avg_peak_mem} GB" >> "$summary_file"
-    echo "  Average Memory   : ${avg_avg_mem} GB" >> "$summary_file"
-    echo "  Memory Overhead  : ${avg_overhead_mem} GB" >> "$summary_file"
+    echo "  Idle Memory        : ${avg_idle_mem} GB" >> "$summary_file"
+    echo "  Setup Memory       : ${avg_setup_mem} GB" >> "$summary_file"
+    echo "  Peak Memory        : ${avg_peak_mem} GB" >> "$summary_file"
+    echo "  Average Memory     : ${avg_avg_mem} GB" >> "$summary_file"
+    echo "  Crypto Overhead    : ${avg_crypto_overhead_mem} GB" >> "$summary_file"
+    echo "  Sorting Overhead   : ${avg_sorting_overhead_mem} GB" >> "$summary_file"
     echo "" >> "$summary_file"
     echo "Error Analysis:" >> "$summary_file"
     echo "  Max Error (log2): $avg_max_err_log" >> "$summary_file"
