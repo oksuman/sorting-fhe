@@ -20,46 +20,6 @@ KWAY_K2_SIZES=(4 8 16 32 64 128 256 512 1024)
 KWAY_K3_SIZES=(9 27 81 243 729)
 KWAY_K5_SIZES=(25 125 625)
 
-extract_test_results() {
-    local input_file=$1
-    local output_dir=$2
-
-    local sizes=($(grep "^Input array size:" "$input_file" | awk '{print $4}'))
-
-    if [ ${#sizes[@]} -eq 0 ]; then
-        echo "Warning: No 'Input array size:' patterns found in $input_file"
-        cat "$input_file" > "${output_dir}/debug_output.txt"
-        echo "Saved test output to ${output_dir}/debug_output.txt for debugging"
-        return
-    fi
-
-    for i in "${!sizes[@]}"; do
-        local size=${sizes[$i]}
-        echo "Processing results for size: $size"
-
-        local size_file="${output_dir}/size_${size}.txt"
-        > "$size_file"
-
-        local start_pattern="Input array size: ${size}"
-
-        if [ $((i+1)) -lt ${#sizes[@]} ]; then
-            local next_size=${sizes[$((i+1))]}
-            local end_pattern="Input array size: ${next_size}"
-
-            awk -v start="$start_pattern" -v end="$end_pattern" '
-                $0 ~ start {found=1; print; next}
-                $0 ~ end {found=0}
-                found {print}
-            ' "$input_file" > "$size_file"
-        else
-            awk -v start="$start_pattern" '
-                $0 ~ start {found=1}
-                found {print}
-            ' "$input_file" > "$size_file"
-        fi
-    done
-}
-
 format_results() {
     local algo=$1
     local size=$2
@@ -280,6 +240,57 @@ format_results() {
     echo "Results for $algo with N=$size successfully processed"
 }
 
+get_test_filter() {
+    local algo=$1
+    local size=$2
+    local index=0
+
+    case $algo in
+        "ours"|"ours_hybrid"|"mehp24"|"kway_k2")
+            local standard_sizes=(4 8 16 32 64 128 256 512 1024)
+            for i in "${!standard_sizes[@]}"; do
+                if [[ "${standard_sizes[$i]}" -eq "$size" ]]; then
+                    index=$i
+                    break
+                fi
+            done
+            ;;
+        "kway_k3")
+            local k3_sizes=(9 27 81 243 729)
+            for i in "${!k3_sizes[@]}"; do
+                if [[ "${k3_sizes[$i]}" -eq "$size" ]]; then
+                    index=$i
+                    break
+                fi
+            done
+            ;;
+        "kway_k5")
+            local k5_sizes=(25 125 625)
+            for i in "${!k5_sizes[@]}"; do
+                if [[ "${k5_sizes[$i]}" -eq "$size" ]]; then
+                    index=$i
+                    break
+                fi
+            done
+            ;;
+    esac
+
+    case $algo in
+        "ours")
+            echo "DirectSort/DirectSortTestFixture/${index}.SortTest"
+            ;;
+        "ours_hybrid")
+            echo "HybridSort/HybridSortTestFixture/${index}.SortTest"
+            ;;
+        "mehp24")
+            echo "MEHPSort/MEHPSortTestFixture/${index}.SortTest"
+            ;;
+        "kway_k2"|"kway_k3"|"kway_k5")
+            echo "KWaySortTestFixture/${index}.SortTest"
+            ;;
+    esac
+}
+
 run_test() {
    local algo=$1
    local test_executable=$2
@@ -293,27 +304,26 @@ run_test() {
        local trial_output_dir="${SCRIPT_DIR}/experimental_results/${algo}/trials/trial_${trial}"
        mkdir -p "$trial_output_dir"
 
-       local executable_path="./$test_executable"
+       for size in "${sizes[@]}"; do
+           echo "  Running size N=$size"
+           local size_output="${trial_output_dir}/size_${size}.txt"
+           local executable_path="./$test_executable"
+           local filter=$(get_test_filter "$algo" "$size")
 
-       echo "Executing: $executable_path"
-       sync
+           echo "  Filter: $filter"
+           sync
 
-       if [[ "$algo" == "kway_k2" || "$algo" == "kway_k3" || "$algo" == "kway_k5" ]]; then
-           $executable_path --gtest_filter="KWaySortTestFixture/*.SortTest" > "${trial_output_dir}/output.txt" 2>&1
-       else
-           $executable_path > "${trial_output_dir}/output.txt" 2>&1
-       fi
+           $executable_path --gtest_filter="$filter" > "$size_output" 2>&1
 
-       if [ $? -ne 0 ]; then
-           echo "Warning: Process exited with error for $algo"
-           cat "${trial_output_dir}/output.txt" > "${trial_output_dir}/error_output.txt"
-           echo "Error output saved to ${trial_output_dir}/error_output.txt"
-       fi
+           if [ $? -ne 0 ]; then
+               echo "  Warning: Process exited with error for $algo N=$size"
+           fi
 
-       extract_test_results "${trial_output_dir}/output.txt" "$trial_output_dir"
+           sync
+           sleep 5
+       done
 
-       sync
-       sleep 10
+       sleep 5
    done
 
    local trial_dir="${SCRIPT_DIR}/experimental_results/${algo}/trials"
