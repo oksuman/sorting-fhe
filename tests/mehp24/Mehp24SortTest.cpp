@@ -200,6 +200,10 @@ TYPED_TEST_P(MEHPSortTestFixture, SortFGTest) {
     std::cout << "Result Level: " << ctxt_out->GetLevel() << std::endl;
 
     ASSERT_LT(maxError, 0.01);
+
+    this->m_cc->ClearEvalMultKeys();
+    this->m_cc->ClearEvalAutomorphismKeys();
+    lbcrypto::CryptoContextFactory<lbcrypto::DCRTPoly>::ReleaseAllContexts();
 }
 
 REGISTER_TYPED_TEST_SUITE_P(MEHPSortTestFixture, SortFGTest);

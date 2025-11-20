@@ -208,6 +208,10 @@ TYPED_TEST(KWaySortTestFixture, SortTest) {
 
     ASSERT_LT(maxError, 0.01) << "Maximum error exceeds threshold";
     ASSERT_EQ(largeErrorCount, 0) << "Found errors larger than 0.01";
+
+    this->m_cc->ClearEvalMultKeys();
+    this->m_cc->ClearEvalAutomorphismKeys();
+    lbcrypto::CryptoContextFactory<lbcrypto::DCRTPoly>::ReleaseAllContexts();
 }
 
 int main(int argc, char **argv) {

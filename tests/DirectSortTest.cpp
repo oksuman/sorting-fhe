@@ -187,6 +187,10 @@ TYPED_TEST_P(DirectSortTestFixture, SortTest) {
               << std::endl;
 
     ASSERT_LT(maxError, 0.01);
+
+    this->m_cc->ClearEvalMultKeys();
+    this->m_cc->ClearEvalAutomorphismKeys();
+    lbcrypto::CryptoContextFactory<lbcrypto::DCRTPoly>::ReleaseAllContexts();
 }
 
 REGISTER_TYPED_TEST_SUITE_P(DirectSortTestFixture, SortTest);
