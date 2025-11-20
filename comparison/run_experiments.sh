@@ -3,7 +3,7 @@
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 PROJECT_ROOT="$( cd "$SCRIPT_DIR/.." && pwd )"
 TEST_DIR="$PROJECT_ROOT/build/tests"
-NUM_TRIALS=10
+NUM_TRIALS=1
 
 mkdir -p "$SCRIPT_DIR/experimental_results/mehp24"
 mkdir -p "$SCRIPT_DIR/experimental_results/ours"
@@ -372,6 +372,3 @@ run_test "ours_hybrid2" "DirectSortH2Test" "${DIRECT_SIZES[@]}"
 sync
 sleep 30
 
-generate_final_summary
-
-echo "KWay experiments completed!"

@@ -14,22 +14,22 @@ function(add_unit_test TARGET_NAME)
     gtest_discover_tests(${TARGET_NAME})
 endfunction()
 
-add_unit_test(SincTest 
-    SincTest.cpp 
+add_unit_test(SincTest
+    SincTest.cpp
     ${CMAKE_SOURCE_DIR}/src/sign.cpp
     ${CMAKE_SOURCE_DIR}/src/comparison.cpp
     ${CMAKE_SOURCE_DIR}/src/encryption.cpp
-) 
+)
 add_dependencies(SincTest generate_coeffs_target)
 
-add_unit_test(SignTest 
-    SignTest.cpp 
+add_unit_test(SignTest
+    SignTest.cpp
     ${CMAKE_SOURCE_DIR}/src/encryption.cpp
     ${CMAKE_SOURCE_DIR}/src/sign.cpp
 )
 
-add_unit_test(CompareTest 
-    CompareTest.cpp 
+add_unit_test(CompareTest
+    CompareTest.cpp
     ${CMAKE_SOURCE_DIR}/src/encryption.cpp
     ${CMAKE_SOURCE_DIR}/src/sign.cpp
     ${CMAKE_SOURCE_DIR}/src/comparison.cpp
@@ -44,22 +44,13 @@ add_unit_test(RotationTest
     ${CMAKE_SOURCE_DIR}/src/encryption.cpp
 )
 
-add_unit_test(BitonicSortTest 
-    BitonicSortTest.cpp 
+add_unit_test(BitonicSortTest
+    BitonicSortTest.cpp
     ${CMAKE_SOURCE_DIR}/src/sign.cpp
     ${CMAKE_SOURCE_DIR}/src/comparison.cpp
     ${CMAKE_SOURCE_DIR}/src/encryption.cpp
 )
 add_dependencies(BitonicSortTest generate_coeffs_target)
-
-add_unit_test(DirectSortTest
-    DirectSortTest.cpp
-    memory_tracker.cpp
-    ${CMAKE_SOURCE_DIR}/src/sign.cpp
-    ${CMAKE_SOURCE_DIR}/src/comparison.cpp
-    ${CMAKE_SOURCE_DIR}/src/encryption.cpp
-)
-add_dependencies(DirectSortTest generate_coeffs_target)
 
 add_unit_test(DirectSortHTest
     DirectSortHTest.cpp
@@ -70,28 +61,16 @@ add_unit_test(DirectSortHTest
 )
 add_dependencies(DirectSortHTest generate_coeffs_target)
 
-add_unit_test(DirectSortH1Test DirectSortH1Test.cpp memory_tracker.cpp
-    ${CMAKE_SOURCE_DIR}/src/sign.cpp
-    ${CMAKE_SOURCE_DIR}/src/comparison.cpp
-    ${CMAKE_SOURCE_DIR}/src/encryption.cpp)
-add_dependencies(DirectSortH1Test generate_coeffs_target)
-
-add_unit_test(DirectSortH2Test DirectSortH2Test.cpp memory_tracker.cpp
-    ${CMAKE_SOURCE_DIR}/src/sign.cpp
-    ${CMAKE_SOURCE_DIR}/src/comparison.cpp
-    ${CMAKE_SOURCE_DIR}/src/encryption.cpp)
-add_dependencies(DirectSortH2Test generate_coeffs_target)
-
-add_unit_test(DirectSortNTest 
-    DirectSortNTest.cpp 
+add_unit_test(DirectSortNTest
+    DirectSortNTest.cpp
     ${CMAKE_SOURCE_DIR}/src/sign.cpp
     ${CMAKE_SOURCE_DIR}/src/comparison.cpp
     ${CMAKE_SOURCE_DIR}/src/encryption.cpp
 )
 add_dependencies(DirectSortNTest generate_coeffs_target)
 
-add_unit_test(KWaySortTest 
-    KWaySortTest.cpp 
+add_unit_test(KWaySortTest
+    KWaySortTest.cpp
     ${CMAKE_SOURCE_DIR}/src/encryption.cpp
     ${CMAKE_SOURCE_DIR}/src/sign.cpp
     ${CMAKE_SOURCE_DIR}/src/comparison.cpp
@@ -104,3 +83,9 @@ add_dependencies(KWaySortTest generate_coeffs_target)
 
 add_subdirectory(mehp24)
 add_subdirectory(k-way)
+add_subdirectory(k-way2)
+add_subdirectory(k-way3)
+add_subdirectory(k-way5)
+add_subdirectory(ours)
+add_subdirectory(ours-h1)
+add_subdirectory(ours-h2)

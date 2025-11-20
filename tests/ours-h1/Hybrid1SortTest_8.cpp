@@ -1,0 +1,16 @@
+#include "Hybrid1SortTestTemplate.h"
+
+using TestSizes = ::testing::Types<
+    std::integral_constant<size_t, 8>
+>;
+
+INSTANTIATE_TYPED_TEST_SUITE_P(
+    Hybrid1Sort_8,
+    HybridSortTestFixture,
+    TestSizes
+);
+
+int main(int argc, char **argv) {
+    ::testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
+}

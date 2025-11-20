@@ -45,9 +45,6 @@ set_source_files_properties(${GENERATED_COEFFS_PATH} PROPERTIES GENERATED TRUE)
 set_source_files_properties(${GENERATED_DOUBLED_COEFFS_PATH} PROPERTIES GENERATED TRUE)
 
 target_include_directories(src PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
-target_include_directories(DirectSortTest PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
-target_include_directories(SincTest PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
-target_include_directories(DirectSortBenchmark PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
 
 file(GLOB CPP_FILES "*.cpp")
 
@@ -59,6 +56,7 @@ foreach(CPP_FILE ${CPP_FILES})
        ${CMAKE_CURRENT_SOURCE_DIR}
        ${CMAKE_SOURCE_DIR}/src
        ${OpenFHE_INCLUDE_DIRS}
+       ${CMAKE_CURRENT_BINARY_DIR}
    )
    target_link_libraries(${FILE_NAME}
        PRIVATE
