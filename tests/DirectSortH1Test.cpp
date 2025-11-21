@@ -23,9 +23,14 @@
 using namespace lbcrypto;
 namespace fs = std::filesystem;
 
+double g_idleMemoryGB = 0.0;
+
 template <size_t N> class HybridSortTest : public ::testing::Test {
   protected:
     void SetupParameters() {
+
+        g_idleMemoryGB = MemoryMonitor::getMemoryUsageGB();
+
         CCParams<CryptoContextCKKSRNS> parameters;
         parameters.SetBatchSize(N);
 
@@ -147,6 +152,9 @@ TYPED_TEST_SUITE_P(HybridSortTestFixture);
 
 TYPED_TEST_P(HybridSortTestFixture, SortHybridTest) {
     constexpr size_t N = TypeParam::value;
+
+    double idleMemoryGB = g_idleMemoryGB;
+
     std::vector<double> inputArray =
         getVectorWithMinDiff(N, 0, 1, 1 / (double)N);
 
@@ -220,15 +228,18 @@ TYPED_TEST_P(HybridSortTestFixture, SortHybridTest) {
 
     double peakMemoryGB = memMonitor.getPeakMemoryGB();
     double avgMemoryGB = memMonitor.getAverageMemoryGB();
-    double overheadMemoryGB = peakMemoryGB - setupMemoryGB;
+    double cryptoOverheadGB = setupMemoryGB - idleMemoryGB;
+    double sortingOverheadGB = peakMemoryGB - setupMemoryGB;
 
     std::cout << "\nPerformance Analysis:" << std::endl;
     std::cout << "Execution time: " << duration.count() << " ms" << std::endl;
     std::cout << "\nMemory Analysis:" << std::endl;
+    std::cout << "Idle Memory (GB): " << idleMemoryGB << std::endl;
     std::cout << "Setup Memory (GB): " << setupMemoryGB << std::endl;
     std::cout << "Peak Memory (GB): " << peakMemoryGB << std::endl;
     std::cout << "Average Memory (GB): " << avgMemoryGB << std::endl;
-    std::cout << "Memory Overhead (GB): " << overheadMemoryGB << std::endl;
+    std::cout << "Crypto Overhead (GB): " << cryptoOverheadGB << std::endl;
+    std::cout << "Sorting Overhead (GB): " << sortingOverheadGB << std::endl;
     std::cout << "\nError Analysis:" << std::endl;
     std::cout << "Maximum error: " << maxError
               << " (log2: " << std::log2(maxError) << ")" << std::endl;
@@ -236,15 +247,20 @@ TYPED_TEST_P(HybridSortTestFixture, SortHybridTest) {
               << " (log2: " << std::log2(avgError) << ")" << std::endl;
     std::cout << "Number of errors larger than 0.01: " << largeErrorCount
               << std::endl;
+    std::cout << "Result Level: " << ctxt_out->GetLevel() << std::endl;
 
     ASSERT_LT(maxError, 0.01);
+    
+    this->m_cc->ClearEvalMultKeys();
+    this->m_cc->ClearEvalAutomorphismKeys();
+    lbcrypto::CryptoContextFactory<lbcrypto::DCRTPoly>::ReleaseAllContexts();
 }
 
 REGISTER_TYPED_TEST_SUITE_P(HybridSortTestFixture, SortHybridTest);
 
 using TestSizes = ::testing::Types<
-    // std::integral_constant<size_t, 4>, std::integral_constant<size_t, 8>,
-    // std::integral_constant<size_t, 16>, std::integral_constant<size_t, 32>,
+    std::integral_constant<size_t, 4>, std::integral_constant<size_t, 8>,
+    std::integral_constant<size_t, 16>, std::integral_constant<size_t, 32>,
     std::integral_constant<size_t, 64>, std::integral_constant<size_t, 128>,
     std::integral_constant<size_t, 256>, std::integral_constant<size_t, 512>,
     std::integral_constant<size_t, 1024>>;

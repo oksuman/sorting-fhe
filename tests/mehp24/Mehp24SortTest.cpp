@@ -20,9 +20,14 @@ using namespace lbcrypto;
 using namespace std::chrono;
 namespace fs = std::filesystem;
 
+double g_idleMemoryGB = 0.0;
+
 template <int N> class MEHPSortTest : public ::testing::Test {
   protected:
     void SetUp() override {
+
+        g_idleMemoryGB = MemoryMonitor::getMemoryUsageGB();
+
         CCParams<CryptoContextCKKSRNS> parameters;
 
         parameters.SetSecurityLevel(HEStd_128_classic);
@@ -105,7 +110,7 @@ TYPED_TEST_SUITE_P(MEHPSortTestFixture);
 TYPED_TEST_P(MEHPSortTestFixture, SortFGTest) {
     constexpr size_t N = TypeParam::value;
 
-    double idleMemoryGB = MemoryMonitor::getMemoryUsageGB();
+    double idleMemoryGB = g_idleMemoryGB;
 
     std::vector<double> inputArray =
         getVectorWithMinDiff(N, 0, 1, 1 / (double)N);
@@ -133,7 +138,7 @@ TYPED_TEST_P(MEHPSortTestFixture, SortFGTest) {
 
     std::cout << "Sign Configuration: CompositeSign(" << Cfg.compos.n << ", "
               << Cfg.compos.dg << ", " << Cfg.compos.df << ")" << std::endl;
-    std::cout << ", dg_i=" << dg_i << ", df_i=" << df_i << std::endl;
+    // std::cout << ", dg_i=" << dg_i << ", df_i=" << df_i << std::endl;
 
     double setupMemoryGB = MemoryMonitor::getMemoryUsageGB();
     MemoryMonitor memMonitor(500);

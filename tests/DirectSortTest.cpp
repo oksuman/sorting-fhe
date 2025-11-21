@@ -20,9 +20,14 @@
 using namespace lbcrypto;
 namespace fs = std::filesystem;
 
+double g_idleMemoryGB = 0.0;
+
 template <size_t N> class DirectSortTest : public ::testing::Test {
   protected:
     void SetUp() override {
+        
+        g_idleMemoryGB = MemoryMonitor::getMemoryUsageGB();
+
         CCParams<CryptoContextCKKSRNS> parameters;
         DirectSort<N>::getSizeParameters(parameters, rotations);
 
@@ -91,7 +96,7 @@ TYPED_TEST_SUITE_P(DirectSortTestFixture);
 TYPED_TEST_P(DirectSortTestFixture, SortTest) {
     constexpr size_t N = TypeParam::value;
 
-    double idleMemoryGB = MemoryMonitor::getMemoryUsageGB();
+    double idleMemoryGB = g_idleMemoryGB;
 
     std::vector<double> inputArray =
         getVectorWithMinDiff(N, 0, 1, 1 / (double)N);

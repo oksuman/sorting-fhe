@@ -12,9 +12,14 @@
 using namespace lbcrypto;
 using namespace kwaySort;
 
+double g_idleMemoryGB = 0.0;
+
 template <size_t N> class KWaySortTest : public ::testing::Test {
   protected:
     void SetUp() override {
+        
+        g_idleMemoryGB = MemoryMonitor::getMemoryUsageGB();
+
         CCParams<CryptoContextCKKSRNS> parameters;
         std::vector<uint32_t> levelBudget;
         KWayAdapter<N>::getSizeParameters(parameters, rotations, levelBudget);
@@ -78,7 +83,7 @@ TYPED_TEST_SUITE(KWaySortTestFixture, TestSizes);
 TYPED_TEST(KWaySortTestFixture, SortTest) {
     constexpr size_t N = TypeParam::value;
 
-    double idleMemoryGB = MemoryMonitor::getMemoryUsageGB();
+    double idleMemoryGB = g_idleMemoryGB;
 
     int k = 2;
     int M, d_f, d_g;

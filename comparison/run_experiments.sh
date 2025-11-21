@@ -246,7 +246,7 @@ get_test_filter() {
     local index=0
 
     case $algo in
-        "ours"|"ours_hybrid"|"mehp24"|"kway_k2")
+        "ours"|"ours_hybrid"|"ours_hybrid1"|"ours_hybrid2"|"mehp24"|"kway_k2")
             local standard_sizes=(4 8 16 32 64 128 256 512 1024)
             for i in "${!standard_sizes[@]}"; do
                 if [[ "${standard_sizes[$i]}" -eq "$size" ]]; then
@@ -279,8 +279,8 @@ get_test_filter() {
         "ours")
             echo "DirectSort/DirectSortTestFixture/${index}.SortTest"
             ;;
-        "ours_hybrid")
-            echo "HybridSort/HybridSortTestFixture/${index}.SortTest"
+        "ours_hybrid"|"ours_hybrid1"|"ours_hybrid2")
+            echo "HybridSort/HybridSortTestFixture/${index}.SortHybridTest"
             ;;
         "mehp24")
             echo "MEHPSort/MEHPSortTestFixture/${index}.SortTest"
@@ -350,29 +350,29 @@ mkdir -p "${SCRIPT_DIR}/experimental_results/ours_hybrid2/trials"
 > "${SCRIPT_DIR}/experimental_results/ours_hybrid1/total_results.txt"
 > "${SCRIPT_DIR}/experimental_results/ours_hybrid2/total_results.txt"
 
-run_test "ours" "DirectSortTest" "${DIRECT_SIZES[@]}"
-sync
-sleep 30
+# run_test "ours" "DirectSortTest" "${DIRECT_SIZES[@]}"
+# sync
+# sleep 30
 
-run_test "mehp24" "mehp24/Mehp24SortTest" "${MEHP24_SIZES[@]}"
-sync
-sleep 30
+# run_test "mehp24" "mehp24/Mehp24SortTest" "${MEHP24_SIZES[@]}"
+# sync
+# sleep 30
 
-run_test "kway_k2" "k-way/KWaySort2Test" "${KWAY_K2_SIZES[@]}"
-sync
-sleep 30
+# run_test "kway_k2" "k-way/KWaySort2Test" "${KWAY_K2_SIZES[@]}"
+# sync
+# sleep 30
 
-run_test "kway_k3" "k-way/KWaySort3Test" "${KWAY_K3_SIZES[@]}"
-sync
-sleep 30
+# run_test "kway_k3" "k-way/KWaySort3Test" "${KWAY_K3_SIZES[@]}"
+# sync
+# sleep 30
 
-run_test "kway_k5" "k-way/KWaySort5Test" "${KWAY_K5_SIZES[@]}"
-sync
-sleep 30
+# run_test "kway_k5" "k-way/KWaySort5Test" "${KWAY_K5_SIZES[@]}"
+# sync
+# sleep 30
 
-run_test "ours_hybrid" "DirectSortHTest" "${DIRECT_SIZES[@]}"
-sync
-sleep 30
+# run_test "ours_hybrid" "DirectSortHTest" "${DIRECT_SIZES[@]}"
+# sync
+# sleep 30
 
 run_test "ours_hybrid1" "DirectSortH1Test" "${DIRECT_SIZES[@]}"
 sync
@@ -381,7 +381,3 @@ sleep 30
 run_test "ours_hybrid2" "DirectSortH2Test" "${DIRECT_SIZES[@]}"
 sync
 sleep 30
-
-generate_final_summary
-
-echo "KWay experiments completed!"

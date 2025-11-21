@@ -227,7 +227,7 @@ Ciphertext<DCRTPoly> sortFG(Ciphertext<DCRTPoly> c, const size_t vectorLength,
         replicateColumn(transposeRow(c, vectorLength, true), vectorLength);
 
     Ciphertext<DCRTPoly> C = compareAdv(VR, VC, dg_c, df_c);
-    std::cout << "C levels: " << C->GetLevel() << std::endl;
+    // std::cout << "C levels: " << C->GetLevel() << std::endl;
 
     Ciphertext<DCRTPoly> R = sumRows(C, vectorLength);
 
@@ -237,11 +237,11 @@ Ciphertext<DCRTPoly> sortFG(Ciphertext<DCRTPoly> c, const size_t vectorLength,
             subMask[i * vectorLength + j] = -1.0 * i - 0.5;
     Ciphertext<DCRTPoly> M =
         indicatorAdv(R + subMask, vectorLength, dg_i, df_i);
-    std::cout << "M levels: " << M->GetLevel() << std::endl;
+    // std::cout << "M levels: " << M->GetLevel() << std::endl;
 
     auto tmp = M * VR;
     Ciphertext<DCRTPoly> S = sumColumns(M * VR, vectorLength, true);
-    std::cout << "S levels: " << S->GetLevel() << std::endl;
+    // std::cout << "S levels: " << S->GetLevel() << std::endl;
 
     auto result = transposeColumn(S, vectorLength, true);
 
@@ -260,7 +260,7 @@ Ciphertext<DCRTPoly> sortFG(Ciphertext<DCRTPoly> c, const size_t vectorLength,
 
     Ciphertext<DCRTPoly> C = comp->compare(m_cc, VR, VC, SignFunc, Cfg);
 
-    std::cout << "C levels: " << C->GetLevel() << std::endl;
+    // std::cout << "C levels: " << C->GetLevel() << std::endl;
 
     Ciphertext<DCRTPoly> R = sumRows(C, vectorLength);
 
@@ -270,12 +270,12 @@ Ciphertext<DCRTPoly> sortFG(Ciphertext<DCRTPoly> c, const size_t vectorLength,
             subMask[i * vectorLength + j] = -1.0 * i - 0.5;
     Ciphertext<DCRTPoly> M =
         indicatorAdv(R + subMask, vectorLength, dg_i, df_i);
-    std::cout << "M levels: " << M->GetLevel() << std::endl;
+    // std::cout << "M levels: " << M->GetLevel() << std::endl;
 
     auto tmp = M * VR;
 
     Ciphertext<DCRTPoly> S = sumColumns(M * VR, vectorLength, true);
-    std::cout << "S levels: " << S->GetLevel() << std::endl;
+    // std::cout << "S levels: " << S->GetLevel() << std::endl;
 
     auto result = transposeColumn(S, vectorLength, true);
     return result;
@@ -302,8 +302,8 @@ sortFG(const std::vector<Ciphertext<DCRTPoly>> &c, const size_t subVectorLength,
         }
     }
 
-    std::cout << "replR levels: " << replR[0]->GetLevel() << std::endl;
-    std::cout << "replC levels: " << replC[0]->GetLevel() << std::endl;
+    // std::cout << "replR levels: " << replR[0]->GetLevel() << std::endl;
+    // std::cout << "replC levels: " << replC[0]->GetLevel() << std::endl;
 
     std::vector<Ciphertext<DCRTPoly>> Cv(numCiphertext);
     std::vector<Ciphertext<DCRTPoly>> Ch(numCiphertext);
@@ -391,7 +391,7 @@ sortFG(const std::vector<Ciphertext<DCRTPoly>> &c, const size_t subVectorLength,
             }
         }
     }
-    std::cout << "s levels: " << s[0]->GetLevel() << std::endl;
+    // std::cout << "s levels: " << s[0]->GetLevel() << std::endl;
 
     std::vector<std::vector<double>> subMasks(numCiphertext);
     for (size_t i = 0; i < numCiphertext; i++) {
