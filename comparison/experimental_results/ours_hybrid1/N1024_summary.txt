@@ -1,0 +1,24 @@
+======================================
+     Results for N = 1024
+======================================
+Crypto Parameters:
+  Ring Dimension      : 131072
+  Multiplicative Depth: 56
+  Scaling Mod Size    : 40
+  Sign Configuration  : CompositeSign(3, 5, 2)
+
+Performance Metrics:
+  Average Time     : 406.9250s
+
+Memory Metrics:
+  Idle Memory        : .0092 GB
+  Setup Memory       : 63.5953 GB
+  Peak Memory        : 84.9792 GB
+  Average Memory     : 76.1875 GB
+  Crypto Overhead    : 63.5860 GB
+  Sorting Overhead   : 21.3839 GB
+
+Error Analysis:
+  Max Error (log2): -17.8471
+  Average Error (log2): -19.7069
+======================================

@@ -14,13 +14,23 @@ function(add_unit_test TARGET_NAME)
     gtest_discover_tests(${TARGET_NAME})
 endfunction()
 
-add_unit_test(SincTest 
-    SincTest.cpp 
-    ${CMAKE_SOURCE_DIR}/src/sign.cpp
-    ${CMAKE_SOURCE_DIR}/src/comparison.cpp
+add_executable(SincTest
+    SincTest.cpp
     ${CMAKE_SOURCE_DIR}/src/encryption.cpp
-) 
+)
+
 add_dependencies(SincTest generate_coeffs_target)
+
+target_include_directories(SincTest PRIVATE
+    ${CMAKE_SOURCE_DIR}/src
+    ${CMAKE_SOURCE_DIR}/utils
+)
+
+target_link_libraries(SincTest PRIVATE
+    mehp24_lib
+    ${OpenFHE_SHARED_LIBRARIES}
+    OpenMP::OpenMP_CXX
+)
 
 add_unit_test(SignTest 
     SignTest.cpp 

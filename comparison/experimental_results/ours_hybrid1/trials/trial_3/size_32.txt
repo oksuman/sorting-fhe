@@ -1,0 +1,34 @@
+Running main() from /home/user/shkim/sorting-fhe/third_party/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = HybridSort/HybridSortTestFixture/3.SortHybridTest
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from HybridSort/HybridSortTestFixture/3, where TypeParam = std::integral_constant<unsigned long,32ul>
+[ RUN      ] HybridSort/HybridSortTestFixture/3.SortHybridTest
+Input array size: 32
+Using Ring Dimension: 131072
+Multiplicative depth: 42
+Scaling Mod: 40
+Sign Configuration: CompositeSign(3, 3, 2)
+
+Performance Analysis:
+Execution time: 52324 ms
+
+Memory Analysis:
+Idle Memory (GB): 0.00927734
+Setup Memory (GB): 14.1093
+Peak Memory (GB): 16.5486
+Average Memory (GB): 15.8274
+Crypto Overhead (GB): 14.1
+Sorting Overhead (GB): 2.43934
+
+Error Analysis:
+Maximum error: 7.23766e-08 (log2: -23.7199)
+Average error: 4.36688e-08 (log2: -24.4488)
+Number of errors larger than 0.01: 0
+Result Level: 42
+[       OK ] HybridSort/HybridSortTestFixture/3.SortHybridTest (65072 ms)
+[----------] 1 test from HybridSort/HybridSortTestFixture/3 (65072 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (65072 ms total)
+[  PASSED  ] 1 test.

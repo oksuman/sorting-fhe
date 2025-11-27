@@ -1,0 +1,225 @@
+======================================
+     Results for N = 4
+======================================
+Crypto Parameters:
+  Ring Dimension      : 131072
+  Multiplicative Depth: 31
+  Scaling Mod Size    : 40
+  Sign Configuration  : CompositeSign(3, 2, 2)
+
+Performance Metrics:
+  Average Time     : 26.6862s
+
+Memory Metrics:
+  Idle Memory        : .0092 GB
+  Setup Memory       : 3.5856 GB
+  Peak Memory        : 4.9192 GB
+  Average Memory     : 4.4765 GB
+  Crypto Overhead    : 3.5763 GB
+  Sorting Overhead   : 1.3335 GB
+
+Error Analysis:
+  Max Error (log2): -11.5252
+  Average Error (log2): -13.2029
+======================================
+
+======================================
+     Results for N = 8
+======================================
+Crypto Parameters:
+  Ring Dimension      : 131072
+  Multiplicative Depth: 35
+  Scaling Mod Size    : 40
+  Sign Configuration  : CompositeSign(3, 2, 2)
+
+Performance Metrics:
+  Average Time     : 36.2520s
+
+Memory Metrics:
+  Idle Memory        : .0092 GB
+  Setup Memory       : 6.3572 GB
+  Peak Memory        : 8.2636 GB
+  Average Memory     : 7.7056 GB
+  Crypto Overhead    : 6.3480 GB
+  Sorting Overhead   : 1.9063 GB
+
+Error Analysis:
+  Max Error (log2): -26.4145
+  Average Error (log2): -27.2729
+======================================
+
+======================================
+     Results for N = 16
+======================================
+Crypto Parameters:
+  Ring Dimension      : 131072
+  Multiplicative Depth: 35
+  Scaling Mod Size    : 40
+  Sign Configuration  : CompositeSign(3, 2, 2)
+
+Performance Metrics:
+  Average Time     : 37.0275s
+
+Memory Metrics:
+  Idle Memory        : .0092 GB
+  Setup Memory       : 8.6227 GB
+  Peak Memory        : 10.6430 GB
+  Average Memory     : 9.9775 GB
+  Crypto Overhead    : 8.6135 GB
+  Sorting Overhead   : 2.0203 GB
+
+Error Analysis:
+  Max Error (log2): -13.7961
+  Average Error (log2): -17.6982
+======================================
+
+======================================
+     Results for N = 32
+======================================
+Crypto Parameters:
+  Ring Dimension      : 131072
+  Multiplicative Depth: 42
+  Scaling Mod Size    : 40
+  Sign Configuration  : CompositeSign(3, 3, 2)
+
+Performance Metrics:
+  Average Time     : 52.1445s
+
+Memory Metrics:
+  Idle Memory        : .0092 GB
+  Setup Memory       : 14.1097 GB
+  Peak Memory        : 17.7238 GB
+  Average Memory     : 16.0775 GB
+  Crypto Overhead    : 14.1004 GB
+  Sorting Overhead   : 3.6140 GB
+
+Error Analysis:
+  Max Error (log2): -23.5067
+  Average Error (log2): -24.4642
+======================================
+
+======================================
+     Results for N = 64
+======================================
+Crypto Parameters:
+  Ring Dimension      : 131072
+  Multiplicative Depth: 42
+  Scaling Mod Size    : 40
+  Sign Configuration  : CompositeSign(3, 3, 2)
+
+Performance Metrics:
+  Average Time     : 56.9265s
+
+Memory Metrics:
+  Idle Memory        : .0092 GB
+  Setup Memory       : 17.4345 GB
+  Peak Memory        : 21.6864 GB
+  Average Memory     : 19.8697 GB
+  Crypto Overhead    : 17.4252 GB
+  Sorting Overhead   : 4.2519 GB
+
+Error Analysis:
+  Max Error (log2): -16.7356
+  Average Error (log2): -21.8327
+======================================
+
+======================================
+     Results for N = 128
+======================================
+Crypto Parameters:
+  Ring Dimension      : 131072
+  Multiplicative Depth: 46
+  Scaling Mod Size    : 40
+  Sign Configuration  : CompositeSign(3, 3, 2)
+
+Performance Metrics:
+  Average Time     : 74.1208s
+
+Memory Metrics:
+  Idle Memory        : .0092 GB
+  Setup Memory       : 26.6367 GB
+  Peak Memory        : 35.4282 GB
+  Average Memory     : 30.3126 GB
+  Crypto Overhead    : 26.6275 GB
+  Sorting Overhead   : 8.7914 GB
+
+Error Analysis:
+  Max Error (log2): -20.6723
+  Average Error (log2): -22.3343
+======================================
+
+======================================
+     Results for N = 256
+======================================
+Crypto Parameters:
+  Ring Dimension      : 131072
+  Multiplicative Depth: 49
+  Scaling Mod Size    : 40
+  Sign Configuration  : CompositeSign(3, 4, 2)
+
+Performance Metrics:
+  Average Time     : 93.5315s
+
+Memory Metrics:
+  Idle Memory        : .0092 GB
+  Setup Memory       : 36.0535 GB
+  Peak Memory        : 44.5067 GB
+  Average Memory     : 40.1763 GB
+  Crypto Overhead    : 36.0442 GB
+  Sorting Overhead   : 8.4532 GB
+
+Error Analysis:
+  Max Error (log2): -19.3010
+  Average Error (log2): -21.1723
+======================================
+
+======================================
+     Results for N = 512
+======================================
+Crypto Parameters:
+  Ring Dimension      : 131072
+  Multiplicative Depth: 53
+  Scaling Mod Size    : 40
+  Sign Configuration  : CompositeSign(3, 4, 2)
+
+Performance Metrics:
+  Average Time     : 178.8680s
+
+Memory Metrics:
+  Idle Memory        : .0092 GB
+  Setup Memory       : 52.9090 GB
+  Peak Memory        : 68.8240 GB
+  Average Memory     : 60.8892 GB
+  Crypto Overhead    : 52.8997 GB
+  Sorting Overhead   : 15.9150 GB
+
+Error Analysis:
+  Max Error (log2): -18.5050
+  Average Error (log2): -20.5013
+======================================
+
+======================================
+     Results for N = 1024
+======================================
+Crypto Parameters:
+  Ring Dimension      : 131072
+  Multiplicative Depth: 56
+  Scaling Mod Size    : 40
+  Sign Configuration  : CompositeSign(3, 5, 2)
+
+Performance Metrics:
+  Average Time     : 406.9250s
+
+Memory Metrics:
+  Idle Memory        : .0092 GB
+  Setup Memory       : 63.5953 GB
+  Peak Memory        : 84.9792 GB
+  Average Memory     : 76.1875 GB
+  Crypto Overhead    : 63.5860 GB
+  Sorting Overhead   : 21.3839 GB
+
+Error Analysis:
+  Max Error (log2): -17.8471
+  Average Error (log2): -19.7069
+======================================
+

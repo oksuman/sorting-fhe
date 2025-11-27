@@ -1,0 +1,1866 @@
+[33mcommit 71c9d8004a14db4b5703b22da575adeca7474d51[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: oksuman <rlatmdgn77@cau.ac.kr>
+Date:   Thu Nov 20 21:53:32 2025 +0900
+
+    want to separate experiments with regard to N
+
+[33mcommit 9cac92b749c0a0cbe0e96a932168a461117f5480[m
+Author: oksuman <rlatmdgn77@cau.ac.kr>
+Date:   Wed Nov 19 23:59:15 2025 +0900
+
+    hybird sorting methods implemented
+
+[33mcommit 5178745575e56a5330909aae51d6e9da1f95ca91[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Wed Nov 19 13:46:22 2025 +0000
+
+    Add idle memory measurement for accuracy
+
+[33mcommit 62c0450c9fa154f03f9a81e56484ce55cc412f57[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Wed Nov 19 09:41:42 2025 +0000
+
+    Add memory tracking to kway sort
+
+[33mcommit a707b8477d8aa900f1cd4c74e87e33f986867a34[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Tue Nov 18 13:27:33 2025 +0000
+
+    Add memory tracker and integrate with result collection
+
+[33mcommit 3f3a31125df892c584aa6ef24f50c08846c43bdf[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Tue Nov 18 13:12:26 2025 +0000
+
+    Give version number for OpenFHE in README
+
+[33mcommit a99131d5a49f7e28fcc5f677ce4fcb488b009190[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Fri Oct 10 10:13:02 2025 +0100
+
+    Add CITATION file for GitHub
+
+[33mcommit 136d9ed9e3daa725854a8f47fa47f069cb37d2fd[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Fri Oct 10 10:12:19 2025 +0100
+
+    Update README installation tips
+
+[33mcommit 0c4475c70fbbac36644780eeaf474d79020b8342[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Fri Oct 10 10:00:23 2025 +0100
+
+    Check for OpenFHE installation at CMake
+
+[33mcommit 78c19cbf784e52d7ff640c14c6580fcd2d738935[m
+Author: oksuman <rlatmdgn77@cau.ac.kr>
+Date:   Wed Jul 2 16:37:10 2025 +0900
+
+    Update README
+
+[33mcommit ca0346009c4420c3f5ba18c62698768a9901857a[m
+Author: oksuman <rlatmdgn77@cau.ac.kr>
+Date:   Wed Jul 2 15:36:14 2025 +0900
+
+    Minor code cleanup
+
+[33mcommit 7378a4d5a392474e28c7110cce5209e0906976b8[m
+Author: oksuman <rlatmdgn77@cau.ac.kr>
+Date:   Wed Jul 2 15:10:57 2025 +0900
+
+    Change license from BSD 3-Clause to MIT
+
+[33mcommit a9192d607aef60144e20d86cec4c248ba7b0bcec[m
+Merge: bf271c9 e1b147a
+Author: oksuman <rlatmdgn77@cau.ac.kr>
+Date:   Fri Jun 27 20:44:20 2025 +0900
+
+    Merge branch 'mehp24' into main
+
+[33mcommit e1b147a0300271f34e3c5993cc7756d64d77bf67[m
+Author: oksuman <rlatmdgn77@cau.ac.kr>
+Date:   Sun May 11 23:57:02 2025 +0900
+
+    comparison code refined
+
+[33mcommit 1555400dff126f54cbb6be6b83aebf2fe511284c[m
+Author: oksuman <rlatmdgn77@cau.ac.kr>
+Date:   Wed Mar 12 13:29:19 2025 +0900
+
+    test finished
+
+[33mcommit 87675f4415698ab1e92399692665b58eac79b4a3[m
+Author: oksuman <rlatmdgn77@cau.ac.kr>
+Date:   Sat Feb 22 10:37:32 2025 +0900
+
+    print NAN if signConfiguration not founded in .sh
+
+[33mcommit a4df1256dddd51516a8150ee5aaa63ced627f8b3[m
+Author: oksuman <rlatmdgn77@cau.ac.kr>
+Date:   Fri Feb 21 23:36:33 2025 +0900
+
+    sh completed
+
+[33mcommit 171aa6698e3538062ca5c334cbce45a4d325931b[m
+Author: oksuman <rlatmdgn77@cau.ac.kr>
+Date:   Fri Feb 21 15:51:29 2025 +0900
+
+    .sh revised
+
+[33mcommit 2d3ca547c170100268f5d557cbc8d3ad7c95cc35[m
+Author: oksuman <rlatmdgn77@cau.ac.kr>
+Date:   Wed Feb 19 22:44:01 2025 +0900
+
+    rotationIndexChecnkN completed
+
+[33mcommit 45b2c2b75eda02e0c2e46e27bae98b1fd51998d0[m
+Author: oksuman <rlatmdgn77@cau.ac.kr>
+Date:   Tue Feb 18 21:14:14 2025 +0900
+
+    rank sort developed, adding rotationIndexCheckingN
+
+[33mcommit ad3dc179120d0c88766cc9b9d81194c50a0e174a[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Sat Feb 15 17:33:27 2025 +0300
+
+    Fix the bootstrapping logic
+
+[33mcommit 90f92fed9ea9d416d72bd6f13270a8f136e14dba[m
+Author: oksuman <rlatmdgn77@cau.ac.kr>
+Date:   Sat Feb 15 14:32:17 2025 +0900
+
+    k-way bootstrapping tracking
+
+[33mcommit 6181974f98afc650462959c7e9b569931f774524[m
+Author: oksuman <rlatmdgn77@cau.ac.kr>
+Date:   Fri Feb 14 20:05:20 2025 +0900
+
+    clang formatted
+
+[33mcommit 5e229aedc5d9ac94e375302e674b249c250787ed[m
+Author: oksuman <rlatmdgn77@cau.ac.kr>
+Date:   Fri Feb 14 19:50:14 2025 +0900
+
+    experimental setting
+
+[33mcommit 4457fe10ac31f2d4ecbcc9005dfcceec178938da[m
+Author: oksuman <rlatmdgn77@cau.ac.kr>
+Date:   Wed Feb 12 02:47:52 2025 +0900
+
+    compile error revised
+
+[33mcommit adeaab1cf2e707752943474995824024a267c074[m
+Merge: ee8eab5 f09afba
+Author: oksuman <rlatmdgn77@cau.ac.kr>
+Date:   Wed Feb 12 02:44:15 2025 +0900
+
+    merged
+
+[33mcommit ee8eab5121d43f3a9d7e13768ab79ceb365981ab[m
+Author: oksuman <rlatmdgn77@cau.ac.kr>
+Date:   Wed Feb 12 02:41:44 2025 +0900
+
+    mehp+ours implementation on going
+
+[33mcommit f09afbae5fef9e2bdbc9ed2d2b0afbf70cade1f2[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Mon Feb 10 15:25:09 2025 +0300
+
+    Level based bootstrap added to composite sign for kway
+
+[33mcommit 65ca05cc6d656516f651188a3d6379776d4a49a1[m
+Author: oksuman <rlatmdgn77@cau.ac.kr>
+Date:   Mon Feb 10 21:22:07 2025 +0900
+
+    hybrid method
+
+[33mcommit f31037049821646f98d14115debed3c9a1ec1196[m
+Merge: 384e885 652acaf
+Author: oksuman <rlatmdgn77@cau.ac.kr>
+Date:   Mon Feb 10 20:02:17 2025 +0900
+
+    Merge branch 'mehp24' of https://github.com/oksuman/FHE-Sorting into mehp24
+
+[33mcommit 384e885aa8585395729138bdde1ffce35e1bc9e2[m
+Author: oksuman <rlatmdgn77@cau.ac.kr>
+Date:   Mon Feb 10 20:01:25 2025 +0900
+
+    hybrid sorting init
+
+[33mcommit 652acaf1610e0ccb06f55d6a820ce4d43de99ecc[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Mon Feb 10 12:38:05 2025 +0300
+
+    KWaySort's Comparison unified with the project
+
+[33mcommit 9059807dc41946af5b46103fd90d920519f784ad[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Mon Feb 10 12:37:32 2025 +0300
+
+    Fix build error from the refactoring
+
+[33mcommit dc1d77527b6f1314bd4daaf968eb8b69d8012c0d[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Mon Feb 10 10:57:28 2025 +0300
+
+    KWaySort Sign config injection added
+
+[33mcommit e7246793a82f5d6eca5f85813ccccaa9cc9db9c4[m
+Author: oksuman <rlatmdgn77@cau.ac.kr>
+Date:   Mon Feb 10 14:40:34 2025 +0900
+
+    clang formatting
+
+[33mcommit bcfa89f6196df920ca3217aec78ad3c9697163cb[m
+Author: oksuman <rlatmdgn77@cau.ac.kr>
+Date:   Mon Feb 10 14:35:42 2025 +0900
+
+    optimized omp usage
+
+[33mcommit 054e35062dd51d8841d94ba762b0b0301fefb394[m
+Author: oksuman <rlatmdgn77@cau.ac.kr>
+Date:   Sat Feb 8 00:27:25 2025 +0900
+
+    mehp24 large array correctness checked
+
+[33mcommit a0347d8f62efc1f9b962ae21cd9172cbf9bca82b[m
+Author: oksuman <rlatmdgn77@cau.ac.kr>
+Date:   Fri Feb 7 22:13:23 2025 +0900
+
+    mehp24 large array
+
+[33mcommit f4167f7529e2e58a54e3f632efd94e0472ba83c2[m
+Author: oksuman <rlatmdgn77@cau.ac.kr>
+Date:   Fri Feb 7 17:32:58 2025 +0900
+
+    set sign configuration
+
+[33mcommit 16fdbd1bb9d3a3ba3796bc407efe84766cec78ef[m
+Author: oksuman <rlatmdgn77@cau.ac.kr>
+Date:   Thu Feb 6 20:56:25 2025 +0900
+
+    compile error fixed
+
+[33mcommit bf271c9f7c33a3bc7ad8084ac75fddb5a04183b5[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Thu Feb 6 14:39:55 2025 +0300
+
+    Update cmake for the new dir layout
+
+[33mcommit 45a34e7050af288cbb63ba72882bc50a592dd871[m
+Author: oksuman <rlatmdgn77@cau.ac.kr>
+Date:   Thu Feb 6 20:38:45 2025 +0900
+
+    mehp24 implementation ported
+
+[33mcommit add303e6736258c3dbd07a4787082642f50dbf46[m
+Author: oksuman <rlatmdgn77@cau.ac.kr>
+Date:   Tue Feb 4 17:00:11 2025 +0900
+
+    rename directory
+
+[33mcommit d03856fca528bfc63626cbb76e519ac54a57a604[m
+Merge: 731d874 9a57903
+Author: oksuman <rlatmdgn77@cau.ac.kr>
+Date:   Tue Feb 4 16:56:04 2025 +0900
+
+    Merge branch 'oksuman' of https://github.com/oksuman/FHE-Sorting into oksuman
+
+[33mcommit 9a5790369e46444bab699696b9127521a8a0268b[m
+Merge: 395ac6f be188fa
+Author: Seunghu Kim <44455550+oksuman@users.noreply.github.com>
+Date:   Tue Feb 4 16:55:34 2025 +0900
+
+    Merge pull request #33 from eymay/kwaySorter
+    
+    K-Way Sort Fully Added
+
+[33mcommit 731d87461a39b5a8e5f9e94c59361f85d415de09[m
+Merge: 4eb1e97 395ac6f
+Author: oksuman <rlatmdgn77@cau.ac.kr>
+Date:   Tue Feb 4 16:06:22 2025 +0900
+
+    Merge branch 'oksuman' of https://github.com/oksuman/FHE-Sorting into oksuman
+
+[33mcommit 4eb1e979b757b6e06fb8cc3e6bc0dd4d6ffe861b[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Fri Dec 27 14:41:45 2024 +0300
+
+    Sinc Chebyshev coefficient generator configured to be built automatically
+
+[33mcommit 2e6c04f52af34bb07afdfda9bd527551e4dd60c6[m
+Author: 김승후 <hoo@hoo.local>
+Date:   Fri Dec 20 11:32:58 2024 +0900
+
+    rotation index check optimized
+
+[33mcommit 45790175c1c95e4840dac375de7d5a9bbba49f76[m
+Author: 김승후 <hoo@hoo.local>
+Date:   Thu Dec 19 18:12:42 2024 +0900
+
+    refactor blindRotation function for further optimization
+
+[33mcommit e8f42a11a7ec621f4017ab48495a6e134457fe28[m
+Author: 김승후 <hoo@hoo.local>
+Date:   Thu Dec 19 14:29:32 2024 +0900
+
+    generalize rotation index checking for arbitrary array size
+
+[33mcommit 50508fb2058dccfe1b0643ee27dad5872ba83637[m
+Author: 김승후 <hoo@hoo.local>
+Date:   Sun Dec 15 16:06:35 2024 +0900
+
+    removed .vscode
+
+[33mcommit 0c47c8ccd1459b2eccad6786ffcb70121a27360d[m
+Author: oksuman <johndoe@example>
+Date:   Sat Dec 7 22:21:21 2024 +0900
+
+    removing redundant functions about masking vector generation
+
+[33mcommit 9c6beed8442f563c0f22cdc04cd352cd4c1e8bc3[m
+Author: oksuman <johndoe@example>
+Date:   Sat Dec 7 22:01:29 2024 +0900
+
+    correctness checked
+
+[33mcommit 64135f6821403d287cbfefca42bf30df2e8a1f2a[m
+Author: oksuman <johndoe@example>
+Date:   Sat Dec 7 19:41:14 2024 +0900
+
+    vecRotsOpt added
+
+[33mcommit 89049efac9ec0cf5ec79c5f9b4ee315aa1d7fa28[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Wed Dec 11 11:19:45 2024 +0300
+
+    Remove unnecessary comment
+
+[33mcommit 8fc546ac1f77a4b2f0f057efdd5c99a08003dbaf[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Tue Dec 10 15:25:15 2024 +0300
+
+    K-Way Sort EvalUtils port from HEAAN to OpenFHE
+
+[33mcommit 757f5e393d1dbe23330e75b50fe0c579c7b7e809[m
+Author: oksuman <rlatmdgn77@cau.ac.kr>
+Date:   Mon Oct 21 18:26:02 2024 +0900
+
+    Adding bootstrapping for lower total circuit depth
+
+[33mcommit f1dd34f337eea89f74140bbb411d0da393d83879[m
+Author: oksuman <rlatmdgn77@cau.ac.kr>
+Date:   Thu Oct 17 14:27:39 2024 +0900
+
+    N=256 pass the test with degree of sinc 3011
+
+[33mcommit 5caf912818f8d6b7b18a8c672ab3eb14d90def45[m
+Author: oksuman <rlatmdgn77@cau.ac.kr>
+Date:   Thu Oct 17 12:10:20 2024 +0900
+
+    clang formatting
+
+[33mcommit 2cc968f89423bd65b7056184027fa2a2627b612c[m
+Author: oksuman <rlatmdgn77@cau.ac.kr>
+Date:   Thu Oct 17 12:04:50 2024 +0900
+
+    General rank construction without half comparison
+
+[33mcommit ef91ed461d5d542d6b2b1ce7d45b797f5f14b976[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Wed Oct 16 10:59:39 2024 +0300
+
+    Add unittests for general functions in direct sort
+
+[33mcommit 7cbd9bea7944db5a34045333237fc6c57a4f500f[m
+Author: oksuman <rlatmdgn77@cau.ac.kr>
+Date:   Wed Oct 16 06:23:09 2024 +0900
+
+    general rotation index checked
+
+[33mcommit 93f2d8a92b0bd6760d55af0174135bb8646096a2[m
+Author: oksuman <rlatmdgn77@cau.ac.kr>
+Date:   Tue Oct 15 02:05:25 2024 +0900
+
+    Adding rotationIndexCheckingGeneral
+
+[33mcommit c5f111d4f7301cdac6eb40a737d252bf391a74b7[m
+Author: oksuman <rlatmdgn77@cau.ac.kr>
+Date:   Mon Oct 14 21:00:30 2024 +0900
+
+    fixed constructRankGeneral
+
+[33mcommit e784ec68786bf39cfcbe483f28783a26c59f5cf8[m
+Author: oksuman <rlatmdgn77@cau.ac.kr>
+Date:   Mon Oct 14 20:12:33 2024 +0900
+
+    Adding rank construction for huge N
+
+[33mcommit 1a62ac181145957579b78d225048641468ccd861[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Sun Oct 13 09:49:14 2024 +0300
+
+    Add log2 error print
+
+[33mcommit cef98dedab7e1be9b11ea222e897fc8f23246e32[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Sun Oct 13 09:21:31 2024 +0300
+
+    Normalize input and change to rand()
+
+[33mcommit 6a16c6001c5e3d442dc08e4783ebf014b515911e[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Sat Oct 12 16:36:29 2024 +0300
+
+    Get parameters for different input sizes of direct sort
+
+[33mcommit 7891a7dc163a8dc8e2ddfc2a46b66c065825a27f[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Sat Oct 12 13:59:08 2024 +0300
+
+    Inject sign for varying configurations of sort
+
+[33mcommit e386e7905160a6f6b7b8afc2ab4471dd7df420ad[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Sat Oct 12 13:58:20 2024 +0300
+
+    Create more sinc coefficients and fix compiler errors
+
+[33mcommit d560c5a697a55d950d99e3f5d6b8b7389af6557f[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Fri Oct 11 20:27:20 2024 +0300
+
+    Remove specific trackers as they add noise to overall benchmark
+
+[33mcommit 92552268c7c063806bf87e5f5b260798e999acbc[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Fri Oct 11 20:20:04 2024 +0300
+
+    direct sort initial benchmark
+
+[33mcommit 06cfee4675c9ce16c1aca0368284fc152de6cad3[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Thu Oct 3 08:20:56 2024 +0300
+
+    SortNBenchmark for varying array sizes
+
+[33mcommit 9a4b7dafeef8d55318dcf5454d11faf4ddc1a6eb[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Thu Oct 3 08:17:03 2024 +0300
+
+    Measurements for bitonic sort
+
+[33mcommit 6b07e0eb26155dfc5bfb2506579b67427028582e[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Thu Oct 3 08:19:41 2024 +0300
+
+    Fix gcc compiler errors
+
+[33mcommit 8d63745efbc8ed9114308e332453a3b1a51468d8[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Wed Oct 2 17:50:21 2024 +0300
+
+    Parallelize rot tree leaf rotates
+
+[33mcommit ab636876b5111a3d98a5592167dc38dd77d9d4b9[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Wed Oct 2 15:36:14 2024 +0300
+
+    Implement Balanced NonAdjacent Form but not used as regresses perf
+
+[33mcommit 89917ee01086080b783bebe5ce886bb7cb32fe30[m
+Author: ml <rlatmdgn77@cau.ac.kr>
+Date:   Wed Oct 2 14:11:36 2024 +0300
+
+    Calibrate gn coefficients to not require rescaling, reduces depth
+
+[33mcommit 5b946453580de3cc8873cbafe54db9bd77261ce2[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Wed Oct 2 14:03:52 2024 +0300
+
+    Removed final clearing of N*N'th slot as half comparison does it in the mask
+
+[33mcommit f3d3b30e92052acc310470a701838d595326ebdd[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Tue Oct 1 18:58:56 2024 +0300
+
+    Half the comparison vector for rotation speed
+
+[33mcommit 6b0ee5c79f220653f296dacafe0f720cab298cb4[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Tue Oct 1 16:04:28 2024 +0300
+
+    Improve parallelization of fn in comparison
+
+[33mcommit 0d749e09589ce081077fec123bcee15b678db67e[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Tue Oct 1 00:16:57 2024 +0300
+
+    remove assert as it is not correct now
+
+[33mcommit ea498d9212f5d8d66ab29153aced2184b9f46ec0[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Mon Sep 30 23:53:49 2024 +0300
+
+    Rot tree for rotIndexCheck with tranform
+
+[33mcommit 01f064c4d0e8014158f85a43cb755fcddfb3622e[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Mon Sep 30 17:03:39 2024 +0300
+
+    Move treeRotate to serial execution as not thread safe yet
+
+[33mcommit 26279c9bb7d786b47b65fa6878118582ebbb40d0[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Sat Sep 21 17:52:09 2024 +0300
+
+    Rotation tree structure for fast rotations on repeated input
+
+[33mcommit 102fa0c9f813f9efa12fcccfd8b6556dd1f0037a[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Fri Sep 13 16:21:32 2024 +0300
+
+    Benchmark for (Fast)Rotation
+
+[33mcommit b7a93ecce498eb9b1f701a0b98d6406ea158984a[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Mon Sep 30 17:22:24 2024 +0300
+
+    Refactor test
+
+[33mcommit fd6d43ac0830aae0df0fe10b02883358f6750866[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Mon Sep 30 17:19:41 2024 +0300
+
+    Improve rotation performance with more keys
+
+[33mcommit 98ee63b9a883c14ec9bcd31001b88c3c57913332[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Mon Sep 30 11:34:49 2024 +0300
+
+    Reduce scale mod size to 35 for possible speed
+
+[33mcommit dbf9a822a75df5acf935466025c2c3768422af58[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Mon Sep 30 10:44:07 2024 +0300
+
+    Add rot index 4096 for very large steps
+
+[33mcommit d16dc3d5e2a0c7607e4d0dd49252640644d2199d[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Mon Sep 30 01:48:33 2024 +0300
+
+    Sinc depth reduced 1 and degree became 833
+
+[33mcommit cd36840f45ec960a973b20d45ee3ae4970b65c98[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Sun Sep 29 21:17:37 2024 +0300
+
+    Fixes and removing dead code
+    
+    Calibrated depth, added rot key 128 and removed unused rotIndexCheck
+
+[33mcommit 661666a8ddba94267d3a61037dc41526f945b7bc[m
+Author: ml <rlatmdgn77@cau.ac.kr>
+Date:   Mon Sep 30 00:26:57 2024 +0900
+
+    sinc vectorization added
+
+[33mcommit f4b75dba07953edaebce2971348a374217b101f0[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Sun Sep 29 15:04:43 2024 +0300
+
+    Rotation Index check test added
+
+[33mcommit 510283c1ba0d8460774fd4b6977439f50862daed[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Sun Sep 29 15:03:05 2024 +0300
+
+    Fix decompose test wrap
+
+[33mcommit 76ebda00b8b11ed331a0efe57a669d5f5ebc5298[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Sun Sep 29 13:51:41 2024 +0300
+
+    formatting changes
+
+[33mcommit e9ec1d7ab49fe9a2fd4dc4f8e329cea7df9fbc6c[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Sun Sep 29 13:50:49 2024 +0300
+
+    Update benchmarks and add bitonic benchmark
+
+[33mcommit 98cf980b9503f203ab554e239f869d2874c1f72a[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Fri Sep 27 12:08:59 2024 +0300
+
+    Relax the sinc coefficient threshold for correctness
+
+[33mcommit 0dd1f91526e5b1ee52e6da4d398d2033febdcf1e[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Tue Sep 24 14:47:07 2024 +0300
+
+    Generalized masking for array sizes
+
+[33mcommit 1032f84b2471c7d402425477e38e4eb9b6e45e4a[m
+Author: ml <rlatmdgn77@cau.ac.kr>
+Date:   Tue Sep 24 18:40:28 2024 +0900
+
+    vectorization modified for reducing error
+
+[33mcommit 743e846d13af9a11c561d76b12fd359980131caf[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Tue Sep 24 15:50:36 2024 +0300
+
+    Precision of cipher added to PRINT_PT
+
+[33mcommit 88708e4d528cbc0325f806edcb5a9813319538d7[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Mon Sep 23 19:39:52 2024 +0300
+
+    Fix rotations wrapping
+
+[33mcommit f8023abb75d438925ea1c7c794f272cd37357435[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Mon Sep 23 09:13:17 2024 +0300
+
+    Decompose smarter with large step and legalizing prior to NAF/Binary
+
+[33mcommit 28b4bd32eefc501ae95f0261407912d26b250696[m
+Author: ml <rlatmdgn77@cau.ac.kr>
+Date:   Sun Sep 22 02:28:56 2024 +0900
+
+    vectorization prototype
+
+[33mcommit 99e60388ca31ccc74442c7ba6f761789869d2dba[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Sat Sep 14 10:50:49 2024 +0300
+
+    Remove rot key index -64 as it is not used
+
+[33mcommit 901601abe5f57a923873221335c70e378d7bd4fb[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Sat Sep 21 18:00:49 2024 +0300
+
+    Batch size set 40 for test
+
+[33mcommit b71e341ad141fad67a6b138106edc4d6a88dab3d[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Sat Sep 21 17:51:32 2024 +0300
+
+    Separate decomposition from rotate
+
+[33mcommit e472cb86389b80218f1cc0d7ecabcf0f62576065[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Sat Sep 21 17:20:18 2024 +0300
+
+    Small fix for submission
+
+[33mcommit fb0d74771f256030c7f06bf23e19a09968d9e5b8[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Sat Sep 21 17:05:32 2024 +0300
+
+    Small format changes and cmake fix
+
+[33mcommit 064e3d26d323b331c7d994738669e0378765b417[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Sat Sep 21 15:04:21 2024 +0300
+
+    Lift the ptxt level for less rescale op
+
+[33mcommit cf6ac50eef6a026a5aa2416524c6b1346663efe6[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Tue Sep 17 08:06:42 2024 +0300
+
+    Make parameters of benchmark more realistic
+
+[33mcommit 55bd85f4f2707b9fdb558bc4597b1f8b7ff33c00[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Sat Sep 21 13:38:24 2024 +0300
+
+    Add bitonic sort test
+
+[33mcommit ee17ba63650ab9d519909efbbb60da7a787fb554[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Wed Sep 18 19:32:56 2024 +0300
+
+    Add sign function characterizer for offline analysis
+    
+    The utility generates a sign function analysis in the form of a C++ header.
+    We can use this static information during build time to target a
+    specific precision and choose from alternatives.
+    
+    ```
+    // Crypto Configuration:
+    // Precision Threshold: 0.01
+    // Max Test Values: 100
+    GET_SIGN_FUNCTION_METRIC(NaiveDiscrete, 7, 1, 23408.44394)
+    GET_SIGN_FUNCTION_METRIC(Tanh, 10, 0.01, 137647.6154)
+    GET_SIGN_FUNCTION_METRIC(CompositeSign_2_2, 20, 0.001, 33274.81714)
+    GET_SIGN_FUNCTION_METRIC(CompositeSign_3_3, 30, 0.0001, 39950.64449)
+    ```
+
+[33mcommit e2bb74785fe485256f423869cdb56061f15d3ff3[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Wed Sep 18 19:31:11 2024 +0300
+
+    Refactor compare and extract sign into its own TU
+
+[33mcommit 3e12a2353ffa91b8e1cc7b02d0b4a835d798a7bf[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Fri Sep 20 17:12:58 2024 +0300
+
+    Bitonic Sort added with test
+    
+    The implementation is adapted from https://github.com/FHE-Applications/FHE-Applications/tree/master/dev/CKKS-App/Sorting. We can parallelize operations inside the same stage in the future.
+
+[33mcommit 2fff7b117a68d68ad766963233fd3f2c3d393f13[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Sat Sep 14 21:31:15 2024 +0300
+
+    Reduce the degree and coefficients for Sinc Chebyshev Approx. (#8)
+    
+    * Reduce the degree and coefficients for Sinc Chebyshev Approx.
+    
+    Depending on the j shift on sinc we can have varying amounts of coefficients. Some coefficients below a threshold do not meaningfully alter the polynomial so they are filtered here.
+    
+    * Reduce mult depth with sinc degree reduction
+    
+    * Reduced sinc threshold and streamlined build for coeff gen
+
+[33mcommit 4f90dc671226ccfed54f1f672035bab6bafcbb7c[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Sun Sep 8 15:58:29 2024 +0300
+
+    Set number of threads equal to physical cores
+
+[33mcommit 275121254fe12b0558914881d96b183dc83d3ba4[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Sun Sep 8 13:50:52 2024 +0300
+
+    Let OpenMP select the thread count
+
+[33mcommit f18d3176b0851a489c8bfd09b1b9a7b5c7221555[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Sun Sep 8 12:41:52 2024 +0300
+
+    Disable print for Enc class
+
+[33mcommit 00fd66c71cc92fdffda5002ec2d734d192b2f2cc[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Sun Sep 8 12:40:05 2024 +0300
+
+    Reduce unnecessary rot keys
+
+[33mcommit 8c76af10f98b1ef246e696f80ba00d4c608ee159[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Sat Sep 7 15:28:27 2024 +0300
+
+    Split Enc class for debug and release
+
+[33mcommit 1ab4f51663d6dd36bd425c1e15686e6d34bb3044[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Sat Sep 7 15:26:23 2024 +0300
+
+    Disable printing for submission automatically
+
+[33mcommit 306da7512fa61f6c63c49dfebc07066af552250d[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Sat Sep 7 13:40:15 2024 +0300
+
+    Bail out from unnecessary rotations
+
+[33mcommit 2eaf7be5a5406807d10ddb72af96e3047bfa2714[m
+Author: Seunghu Kim <44455550+oksuman@users.noreply.github.com>
+Date:   Sat Sep 7 13:38:09 2024 +0300
+
+    Fix submission command flag
+
+[33mcommit b2f5ab736a2d1aff80b2330edf327f98a12e3eb4[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Fri Sep 6 17:16:50 2024 +0300
+
+    NAF optimal key size of 13 reached
+    
+    From 256~ key size we reached a rotation key size of 13 by using NAF rotation composition
+
+[33mcommit 96e5359a2d6be4204b0a916c2959e63600fd941f[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Wed Sep 4 12:17:02 2024 +0300
+
+    Fix release mode compiler error and calibrate tests
+
+[33mcommit b02a7374ef8d789e25a0802590fb92eccd83fb52[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Wed Sep 4 12:07:18 2024 +0300
+
+    Precompute Chebyshev Coefficients by moving it into build time (#4)
+    
+    * Precompute Chebyshev Coefficients by moving it into build time
+    
+    * Replace EvalChebyshevSeries with EvalChebyshevSeriesPS
+
+[33mcommit 4d14be028f405e4d9992ba30b7002ea4830121a3[m
+Author: Seunghu Kim <44455550+oksuman@users.noreply.github.com>
+Date:   Wed Sep 4 17:33:55 2024 +0900
+
+    Halve the number of sign function evaluations && admit the degree of approximated  Sinc function (#3)
+    
+    * Halve the number of sign function evaluations && admit the degree of approximated  Sinc function
+    
+    * Applied Review Comments: formatting, EvalAdd constant once
+    
+    ---------
+    
+    Co-authored-by: CryptoLabCAU <cryptolab.cau@gmail.com>
+
+[33mcommit 03ab4ad08b119eb65cf0d976dcf658c9d5d4e20b[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Tue Sep 3 18:13:30 2024 +0300
+
+    Add sort context for submission
+
+[33mcommit c66f9a85201c27b307dc31b2906efa3aaeb7c347[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Tue Sep 3 18:12:55 2024 +0300
+
+    Refactoring and removing dead codes
+
+[33mcommit 9c653ccc946dc953676746f4b871b44ac72cf700[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Tue Sep 3 11:58:55 2024 +0300
+
+    gitignore build dirs
+
+[33mcommit fc622b575768480d651a5eab1bd17060ed705adb[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Tue Sep 3 10:31:49 2024 +0300
+
+    Benchmark for only construct rank function
+
+[33mcommit f21d08386314fb9f71a1d98e270ccc60bf325842[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Tue Sep 3 10:21:11 2024 +0300
+
+    Increase multi-thread perf by reducing sequential operation
+    
+    According to benchmark improves by 2%, might be negligible but still observable difference
+
+[33mcommit 11297517e1e27c5270b4a30176eb13ff55c2d59d[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Thu Aug 29 10:59:47 2024 +0300
+
+    Set WITH_NATIVEOPT to ON in CMake
+    
+    Allows better optimizations during compilation
+
+[33mcommit 2e920531c749182c700055a8cee05db9deeba486[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Mon Sep 2 17:13:20 2024 +0300
+
+    Constant zero added that can be reused
+
+[33mcommit 936ea08e4770e295094fcab0003a706e8821435e[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Mon Sep 2 16:00:09 2024 +0300
+
+    Increase performance with OpenMP and reducing prints
+
+[33mcommit b3ef3c46e0cc111ca77a299f2db9a5579f90f366[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Mon Sep 2 15:55:18 2024 +0300
+
+    Remove constructRank v1 in place for v2
+
+[33mcommit 41aa8803908209f27f60397c08b3216d3de8889f[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Mon Sep 2 15:10:29 2024 +0300
+
+    Fix rotation keys
+
+[33mcommit e06ee0c597afb289248510edb0ce73a4386fea9b[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Mon Sep 2 14:42:16 2024 +0300
+
+    Add direct sort benchmark
+
+[33mcommit 3f4579c91a36a65f86580fb5f16aa030f9354e68[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Mon Sep 2 13:31:56 2024 +0300
+
+    Add base sort class and propagate compile time evaluation
+
+[33mcommit fa32d0ba8e1595b7b8466a828be844ddbf74fcb9[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Mon Sep 2 13:30:36 2024 +0300
+
+    Add level detail to enc printing
+
+[33mcommit c5bc445f30d6843717a0664a9919c97436029860[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Mon Sep 2 13:30:04 2024 +0300
+
+    Direct Sort test passing fully
+
+[33mcommit 30f6db98699f7af9e4eefd6e151fb4ef8a51342f[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Mon Sep 2 13:28:35 2024 +0300
+
+    Add compile time size N for Sinc with template
+
+[33mcommit beacf2f416cf3651020c428ad0d083afa0fae439[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Fri Aug 30 18:27:04 2024 +0300
+
+    Add small elements test
+
+[33mcommit 369d3d4e30632793c5bac9ead1a7223730469dd8[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Fri Aug 30 18:23:43 2024 +0300
+
+    clang format bm sinc
+
+[33mcommit 477942c2c95e2df7f5851d9846a8ec5bbfdd4c1b[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Fri Aug 30 18:19:21 2024 +0300
+
+    Fix compile errors on sort test
+
+[33mcommit c49583d61db3533cf3fd82ab5a67044815d0eacf[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Fri Aug 30 17:56:43 2024 +0300
+
+    Compare test added
+
+[33mcommit b56f842054e4cc2d40b870b2d358708d880fbb40[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Fri Aug 30 17:55:44 2024 +0300
+
+    Simplified rank construct added
+
+[33mcommit d0b6d28f375d2701266ac0091281f68c9644fa72[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Fri Aug 30 17:53:52 2024 +0300
+
+    Comparison struct added which has the encryption object
+
+[33mcommit 01dc3e934f48e8b41b8191ea54f306d5ebc701a7[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Fri Aug 30 17:36:39 2024 +0300
+
+    Add encryption class for convenient debugging
+
+[33mcommit ea50eceab21f7111eb5ee8e638df4569ca746e96[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Wed Aug 28 17:39:46 2024 +0300
+
+    Refactor direct sort into functions and test
+    
+    Direct sort has several procedures such as rank construction and we want to separate them to have unit testing. It is also desired to make the implementation size independent without sacrificing performance.
+
+[33mcommit 0d0f89e343b3e56fb2d1d764398ba0ed9e401708[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Wed Aug 28 17:11:56 2024 +0300
+
+    Compare function added, can be used in new code
+
+[33mcommit 16ba676dc24251af41ac61c9861b8a7f2508835c[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Wed Aug 28 10:11:20 2024 +0300
+
+    extract compositeSign into the comparison header
+
+[33mcommit 77b6a049fdfcf83ef7271b68c083d54aec1bf4b5[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Tue Aug 27 18:54:42 2024 +0300
+
+    Force release mode in cmake for submission
+
+[33mcommit 0646610e459c8adccfe3dadc2b2e126e46ab0c63[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Tue Aug 27 18:54:27 2024 +0300
+
+    Bitonic sort algorithm in python script
+
+[33mcommit 4fd4726d8bc0805d0cc505339fe08d9c13360d6b[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Tue Aug 27 18:54:10 2024 +0300
+
+    Add benchmark infra and sinc benchmark
+
+[33mcommit 1398c3c22086289b8e5eb0ff8477889ff6b8e07d[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Tue Aug 27 18:51:39 2024 +0300
+
+    New array size is smaller 2048->128
+
+[33mcommit db107dd424b35e438ad4cec86563f1fc30350560[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Tue Aug 27 18:50:51 2024 +0300
+
+    Submission verification
+
+[33mcommit 4897344e4d6251accc9fffa638425c859ec83c67[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Tue Aug 27 12:02:27 2024 +0300
+
+    (WIP) Add sort test for an end-to-end test
+
+[33mcommit 027d21010abc364a526f315d3398ca5890acd667[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Tue Aug 27 11:14:51 2024 +0300
+
+    Add unittest for compositeSign
+
+[33mcommit 45d737ec00125d3878402161965542794a40a2aa[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Tue Aug 27 11:13:53 2024 +0300
+
+    Add sinc shifted by j test for periodicity by 2048
+
+[33mcommit 771578944b53bd3c4209e7b2b576f4a1d6307ee9[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Mon Aug 26 13:39:01 2024 +0300
+
+    Add unittest infra and unittest for sinc
+
+[33mcommit 838148bbc8483d38370c937f211b79ab68b51671[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Mon Aug 26 13:38:32 2024 +0300
+
+    Move sinc function into comparison.h for flexibility
+
+[33mcommit 12feeb719438d4e8f87719221baa3ce115231797[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Mon Aug 26 10:44:10 2024 +0300
+
+    Clang format source files
+    
+    Possible to reproduce using `clang-format -i <source files>`
+
+[33mcommit 876b4e41390dc0c8b391ceab42dc8822e39cc45f[m
+Author: oksuman <johndoe@example>
+Date:   Mon Aug 26 15:14:14 2024 +0900
+
+    codes for submit ver1
+
+[33mcommit be188fa872e4c11aa2aed58116dd95a8fb85f792[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Fri Dec 27 17:45:34 2024 +0300
+
+    KWaySort235Test for k=2,3,5 in array sizes close to 128
+
+[33mcommit 1045d21fb7365a0ee60ff66f6e09e9136a956c13[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Fri Dec 27 14:28:47 2024 +0300
+
+    K-Way Sort Fully Added
+    
+    Sorter Functions and the algorithm added. KWaySortTest is available to check for 128 sized array similar to DirectSortTest.
+
+[33mcommit 9b47bfac37fc7d7fe71e6dc1ea2676e62cdd2eb9[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Fri Dec 27 14:23:47 2024 +0300
+
+    SortUtils Test and Enc integration
+
+[33mcommit 970b4eb291864a056a8beeda5c22d8dbaa3e63bf[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Tue Dec 17 12:21:59 2024 +0300
+
+    K-Way Sort MaskUtils and SortUtils port from HEAAN to OpenFHE
+
+[33mcommit 395ac6f625439b528f18bde423c71f45b0eb55ae[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Fri Dec 27 14:41:45 2024 +0300
+
+    Sinc Chebyshev coefficient generator configured to be built automatically
+
+[33mcommit 662f45567f0ad2301f3ea82be623ce806f9d0f09[m
+Author: 김승후 <hoo@hoo.local>
+Date:   Fri Dec 20 11:32:58 2024 +0900
+
+    rotation index check optimized
+
+[33mcommit 61e759b855513a8027ec633ccce2da4d696ca7c6[m
+Author: 김승후 <hoo@hoo.local>
+Date:   Thu Dec 19 18:12:42 2024 +0900
+
+    refactor blindRotation function for further optimization
+
+[33mcommit 05617bce7989ab1a8e27ffe718154e81578c1849[m
+Author: 김승후 <hoo@hoo.local>
+Date:   Thu Dec 19 14:29:32 2024 +0900
+
+    generalize rotation index checking for arbitrary array size
+
+[33mcommit fc3fbb8104ef0bb6fe71f6401892c18aab7cef2f[m
+Author: 김승후 <hoo@hoo.local>
+Date:   Sun Dec 15 16:06:35 2024 +0900
+
+    removed .vscode
+
+[33mcommit 6142662ea86346b605100b2f9443b502c54467bc[m
+Author: oksuman <johndoe@example>
+Date:   Sat Dec 7 22:21:21 2024 +0900
+
+    removing redundant functions about masking vector generation
+
+[33mcommit 274583d05623945bf15dc51b7946fe99abd9c3f8[m
+Author: oksuman <johndoe@example>
+Date:   Sat Dec 7 22:01:29 2024 +0900
+
+    correctness checked
+
+[33mcommit c290e20add346a207919d08f1c4ed9c8908095b5[m
+Author: oksuman <johndoe@example>
+Date:   Sat Dec 7 19:41:14 2024 +0900
+
+    vecRotsOpt added
+
+[33mcommit ff87817dc36ae050340b7866a45058115f53c847[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Wed Dec 11 11:19:45 2024 +0300
+
+    Remove unnecessary comment
+
+[33mcommit 3b4a84d330a35a417e4d4be30937b7400029aaf3[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Tue Dec 10 15:25:15 2024 +0300
+
+    K-Way Sort EvalUtils port from HEAAN to OpenFHE
+
+[33mcommit b8dea4a6d0b9e0047745ef174a546fdc4dff3cf1[m
+Author: oksuman <rlatmdgn77@cau.ac.kr>
+Date:   Mon Oct 21 18:26:02 2024 +0900
+
+    Adding bootstrapping for lower total circuit depth
+
+[33mcommit 55e0f7f040122a2d665e982c2eae8402f58bbe0a[m
+Author: oksuman <rlatmdgn77@cau.ac.kr>
+Date:   Thu Oct 17 14:27:39 2024 +0900
+
+    N=256 pass the test with degree of sinc 3011
+
+[33mcommit d237a63004a93967626e4408b0617c514b3cb0c0[m
+Author: oksuman <rlatmdgn77@cau.ac.kr>
+Date:   Thu Oct 17 12:10:20 2024 +0900
+
+    clang formatting
+
+[33mcommit 5cf9bf68eddedb30199cc15c969b98ac3ab2010f[m
+Author: oksuman <rlatmdgn77@cau.ac.kr>
+Date:   Thu Oct 17 12:04:50 2024 +0900
+
+    General rank construction without half comparison
+
+[33mcommit 86763d2bb92246b4fafc79b464e78d67e72f73af[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Wed Oct 16 10:59:39 2024 +0300
+
+    Add unittests for general functions in direct sort
+
+[33mcommit 4aa37053233f73b723981d673269f0b4d0112001[m
+Author: oksuman <rlatmdgn77@cau.ac.kr>
+Date:   Wed Oct 16 06:23:09 2024 +0900
+
+    general rotation index checked
+
+[33mcommit b6a02a84c9e9c00f884b0879a5c8b3a8069ff066[m
+Author: oksuman <rlatmdgn77@cau.ac.kr>
+Date:   Tue Oct 15 02:05:25 2024 +0900
+
+    Adding rotationIndexCheckingGeneral
+
+[33mcommit 3ef2e27a0916a4b801aa2742c6b3c8185de724a5[m
+Author: oksuman <rlatmdgn77@cau.ac.kr>
+Date:   Mon Oct 14 21:00:30 2024 +0900
+
+    fixed constructRankGeneral
+
+[33mcommit e69062f0ddfd41b941aecf4b570b85408223cc31[m
+Author: oksuman <rlatmdgn77@cau.ac.kr>
+Date:   Mon Oct 14 20:12:33 2024 +0900
+
+    Adding rank construction for huge N
+
+[33mcommit b27d6c58870978452ebb07a40aadb22d57ea5a90[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Sun Oct 13 09:49:14 2024 +0300
+
+    Add log2 error print
+
+[33mcommit 1d0655d2251ef6ed37ae9527fee1c3d114cc3215[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Sun Oct 13 09:21:31 2024 +0300
+
+    Normalize input and change to rand()
+
+[33mcommit d5176b76c4c36b6c5683a5672d181077748216d9[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Sat Oct 12 16:36:29 2024 +0300
+
+    Get parameters for different input sizes of direct sort
+
+[33mcommit ee2a106fc8a0e6deeba53ee36097e420d2ba92d3[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Sat Oct 12 13:59:08 2024 +0300
+
+    Inject sign for varying configurations of sort
+
+[33mcommit 73abec3c24ee28b4902659a4af5fd1392bad67d1[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Sat Oct 12 13:58:20 2024 +0300
+
+    Create more sinc coefficients and fix compiler errors
+
+[33mcommit 340685fb675ed3e8a4d33c986ad5cda94fb0842f[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Fri Oct 11 20:27:20 2024 +0300
+
+    Remove specific trackers as they add noise to overall benchmark
+
+[33mcommit b0df624c09fd2e3cb647913a1b6b7fd226869a23[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Fri Oct 11 20:20:04 2024 +0300
+
+    direct sort initial benchmark
+
+[33mcommit 263b5da5cae2213a39c5709cf3d21fe23e9b35ea[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Thu Oct 3 08:20:56 2024 +0300
+
+    SortNBenchmark for varying array sizes
+
+[33mcommit c5ee92dd39ece7db98d8dbddaa4c37473ad19535[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Thu Oct 3 08:17:03 2024 +0300
+
+    Measurements for bitonic sort
+
+[33mcommit d8856c7a96c4801fd5c516a3d2213603a2925042[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Thu Oct 3 08:19:41 2024 +0300
+
+    Fix gcc compiler errors
+
+[33mcommit 0513f8b55492e9f42e0f75ca2818788ea39cd818[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Wed Oct 2 17:50:21 2024 +0300
+
+    Parallelize rot tree leaf rotates
+
+[33mcommit 1b6d8b8e21330f849c448439bf6b99c6914892c4[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Wed Oct 2 15:36:14 2024 +0300
+
+    Implement Balanced NonAdjacent Form but not used as regresses perf
+
+[33mcommit b6b1be6828c3956229d98dffb36f4ebde1e5ce7d[m
+Author: ml <rlatmdgn77@cau.ac.kr>
+Date:   Wed Oct 2 14:11:36 2024 +0300
+
+    Calibrate gn coefficients to not require rescaling, reduces depth
+
+[33mcommit 33adacff12ea4d330fd7a92d863705ff2eaa69f6[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Wed Oct 2 14:03:52 2024 +0300
+
+    Removed final clearing of N*N'th slot as half comparison does it in the mask
+
+[33mcommit b93a7520ec0ce031d8aca321412a36fc9d6201c9[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Tue Oct 1 18:58:56 2024 +0300
+
+    Half the comparison vector for rotation speed
+
+[33mcommit f8d00414d414e8ea4663f7a577767502c51cab79[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Tue Oct 1 16:04:28 2024 +0300
+
+    Improve parallelization of fn in comparison
+
+[33mcommit b7c9c778bb7acad38fdf239a95d437c77d689701[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Tue Oct 1 00:16:57 2024 +0300
+
+    remove assert as it is not correct now
+
+[33mcommit 286b14a75071570fadafae902f2c81443cc99115[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Mon Sep 30 23:53:49 2024 +0300
+
+    Rot tree for rotIndexCheck with tranform
+
+[33mcommit 39d936068c3ecd636f7ee80c6d5b391290f61da8[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Mon Sep 30 17:03:39 2024 +0300
+
+    Move treeRotate to serial execution as not thread safe yet
+
+[33mcommit 3fb1428d938a19f68f6189623b7b16b710df325b[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Sat Sep 21 17:52:09 2024 +0300
+
+    Rotation tree structure for fast rotations on repeated input
+
+[33mcommit ae6612ce75786d6703e93a19058b14a6d5a6e46b[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Fri Sep 13 16:21:32 2024 +0300
+
+    Benchmark for (Fast)Rotation
+
+[33mcommit 1206898879d82755d400df61efff17d80a9c4bdc[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Mon Sep 30 17:22:24 2024 +0300
+
+    Refactor test
+
+[33mcommit 05124424f91ff158e3f2fb4b90213624bc8e8359[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Mon Sep 30 17:19:41 2024 +0300
+
+    Improve rotation performance with more keys
+
+[33mcommit fc3311b8aa63efa421b763d6bc16cc99eb330e0d[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Mon Sep 30 11:34:49 2024 +0300
+
+    Reduce scale mod size to 35 for possible speed
+
+[33mcommit 30cb9aedd50e35e75de08059cd6b7c4e83e243a7[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Mon Sep 30 10:44:07 2024 +0300
+
+    Add rot index 4096 for very large steps
+
+[33mcommit e64a080031903216fea4794200ff369e24b8eb5a[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Mon Sep 30 01:48:33 2024 +0300
+
+    Sinc depth reduced 1 and degree became 833
+
+[33mcommit 7a864d621b55ac78edf173a326df35a2d62a1cfb[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Sun Sep 29 21:17:37 2024 +0300
+
+    Fixes and removing dead code
+    
+    Calibrated depth, added rot key 128 and removed unused rotIndexCheck
+
+[33mcommit 8840b107bd12ede22652446cf26c0a4e01a54b87[m
+Author: ml <rlatmdgn77@cau.ac.kr>
+Date:   Mon Sep 30 00:26:57 2024 +0900
+
+    sinc vectorization added
+
+[33mcommit fc595e821376e798d4e073351e57c7a340d04c0c[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Sun Sep 29 15:04:43 2024 +0300
+
+    Rotation Index check test added
+
+[33mcommit d8c445fa64f7d5991a4af1cc73294d0ebadcfeee[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Sun Sep 29 15:03:05 2024 +0300
+
+    Fix decompose test wrap
+
+[33mcommit b3761127ceabd94def25849c5e6c3bfdc6af727f[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Sun Sep 29 13:51:41 2024 +0300
+
+    formatting changes
+
+[33mcommit 5e2c635bfd3b18508aab137fa56754917a645c6a[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Sun Sep 29 13:50:49 2024 +0300
+
+    Update benchmarks and add bitonic benchmark
+
+[33mcommit 0eac451bbc66110044e60d244969a93d7e66ad3e[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Fri Sep 27 12:08:59 2024 +0300
+
+    Relax the sinc coefficient threshold for correctness
+
+[33mcommit 07fe595232b1c2127145842f3f8268bd6abbf7c9[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Tue Sep 24 14:47:07 2024 +0300
+
+    Generalized masking for array sizes
+
+[33mcommit c166049975812ab55da3a658fcaa7816c5e2c436[m
+Author: ml <rlatmdgn77@cau.ac.kr>
+Date:   Tue Sep 24 18:40:28 2024 +0900
+
+    vectorization modified for reducing error
+
+[33mcommit 4cf61bda09c14dc6dc016b2063460e30a81d7d41[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Tue Sep 24 15:50:36 2024 +0300
+
+    Precision of cipher added to PRINT_PT
+
+[33mcommit 3baa6819a8b8311e6a34b27fb68717ab83737155[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Mon Sep 23 19:39:52 2024 +0300
+
+    Fix rotations wrapping
+
+[33mcommit cb5559bc2d143de0e8ce735022d03a955086ab5c[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Mon Sep 23 09:13:17 2024 +0300
+
+    Decompose smarter with large step and legalizing prior to NAF/Binary
+
+[33mcommit 9a0519539c5d5384b652be7580c5fa80eb9dbe7b[m
+Author: ml <rlatmdgn77@cau.ac.kr>
+Date:   Sun Sep 22 02:28:56 2024 +0900
+
+    vectorization prototype
+
+[33mcommit 74fd9b2081cd11cd4a3d79e34eff266bae711da8[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Sat Sep 14 10:50:49 2024 +0300
+
+    Remove rot key index -64 as it is not used
+
+[33mcommit 3c4dae0b9cbe9fb6ff93ab29eccdc92a5b300265[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Sat Sep 21 18:00:49 2024 +0300
+
+    Batch size set 40 for test
+
+[33mcommit d562a0f1a5787481326e1ea8a394fabe2fe65cd3[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Sat Sep 21 17:51:32 2024 +0300
+
+    Separate decomposition from rotate
+
+[33mcommit ff06f990bd0304254cd501fcd5eb6699380abd3e[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Sat Sep 21 17:20:18 2024 +0300
+
+    Small fix for submission
+
+[33mcommit d8a3d567be6d5035e042e275eb2463dd877de09b[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Sat Sep 21 17:05:32 2024 +0300
+
+    Small format changes and cmake fix
+
+[33mcommit 185f53ec62470839a1564ffe9ead3a6028254e55[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Sat Sep 21 15:04:21 2024 +0300
+
+    Lift the ptxt level for less rescale op
+
+[33mcommit 1e5aaeff787524445a191b42829467fb60a2ec72[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Tue Sep 17 08:06:42 2024 +0300
+
+    Make parameters of benchmark more realistic
+
+[33mcommit 7697abe13f44abb976ca50ed3dad4900ebd05dcb[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Sat Sep 21 13:38:24 2024 +0300
+
+    Add bitonic sort test
+
+[33mcommit 18aad9a990564759e4e3515e8e4ab94c8cc5f662[m
+Merge: 735accf d563887
+Author: Seunghu Kim <44455550+oksuman@users.noreply.github.com>
+Date:   Sat Sep 21 18:01:37 2024 +0900
+
+    Merge pull request #10 from eymay/sign_infra
+    
+    Sign Infrastructure for Extensibility
+
+[33mcommit 735accf1b2281a836ae16536455f4f37158d5751[m
+Merge: 5f7d302 0020fa4
+Author: Seunghu Kim <44455550+oksuman@users.noreply.github.com>
+Date:   Sat Sep 21 18:01:20 2024 +0900
+
+    Merge pull request #11 from eymay/bitonic_sort_v2
+    
+    Bitonic Sort added with test
+
+[33mcommit 0020fa4a205a5b004c67d8b724b63b3c7da5e7b9[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Fri Sep 20 17:12:58 2024 +0300
+
+    Bitonic Sort added with test
+    
+    The implementation is adapted from https://github.com/FHE-Applications/FHE-Applications/tree/master/dev/CKKS-App/Sorting. We can parallelize operations inside the same stage in the future.
+
+[33mcommit d5638876364fa3003d9df300d7ff2dafe77ca3d1[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Wed Sep 18 19:32:56 2024 +0300
+
+    Add sign function characterizer for offline analysis
+    
+    The utility generates a sign function analysis in the form of a C++ header.
+    We can use this static information during build time to target a
+    specific precision and choose from alternatives.
+    
+    ```
+    // Crypto Configuration:
+    // Precision Threshold: 0.01
+    // Max Test Values: 100
+    GET_SIGN_FUNCTION_METRIC(NaiveDiscrete, 7, 1, 23408.44394)
+    GET_SIGN_FUNCTION_METRIC(Tanh, 10, 0.01, 137647.6154)
+    GET_SIGN_FUNCTION_METRIC(CompositeSign_2_2, 20, 0.001, 33274.81714)
+    GET_SIGN_FUNCTION_METRIC(CompositeSign_3_3, 30, 0.0001, 39950.64449)
+    ```
+
+[33mcommit 25ffe64753e110bf9f75b13af9f17eea3ecf8f33[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Wed Sep 18 19:31:11 2024 +0300
+
+    Refactor compare and extract sign into its own TU
+
+[33mcommit 5f7d3021eb02b9d1170ea50ba83330290c40f151[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Sat Sep 14 21:31:15 2024 +0300
+
+    Reduce the degree and coefficients for Sinc Chebyshev Approx. (#8)
+    
+    * Reduce the degree and coefficients for Sinc Chebyshev Approx.
+    
+    Depending on the j shift on sinc we can have varying amounts of coefficients. Some coefficients below a threshold do not meaningfully alter the polynomial so they are filtered here.
+    
+    * Reduce mult depth with sinc degree reduction
+    
+    * Reduced sinc threshold and streamlined build for coeff gen
+
+[33mcommit f7a5d73db6a5416074703c765628352c9b0f7c1f[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Sun Sep 8 15:58:29 2024 +0300
+
+    Set number of threads equal to physical cores
+
+[33mcommit 4a06118e4064704e86ca0b261cb1e924186b9661[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Sun Sep 8 13:50:52 2024 +0300
+
+    Let OpenMP select the thread count
+
+[33mcommit ae079b3c17f6c11e8751a15eb7c95a033c631d7f[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Sun Sep 8 12:41:52 2024 +0300
+
+    Disable print for Enc class
+
+[33mcommit 9d8fd7d3203de1bcb1f50e59e8ae13ad5372f632[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Sun Sep 8 12:40:05 2024 +0300
+
+    Reduce unnecessary rot keys
+
+[33mcommit 4055d03670be371f48ac3ea8d59345ff6d21bf16[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Sat Sep 7 15:28:27 2024 +0300
+
+    Split Enc class for debug and release
+
+[33mcommit c1b64932fc810bdea1abd7dad793de29cf02c624[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Sat Sep 7 15:26:23 2024 +0300
+
+    Disable printing for submission automatically
+
+[33mcommit 699200fb7e56317c79e371665f16860d8f0ebfd3[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Sat Sep 7 13:40:15 2024 +0300
+
+    Bail out from unnecessary rotations
+
+[33mcommit a39a92fdb6e785e76fbcb356b0c6316c398fc3ec[m
+Author: Seunghu Kim <44455550+oksuman@users.noreply.github.com>
+Date:   Sat Sep 7 13:38:09 2024 +0300
+
+    Fix submission command flag
+
+[33mcommit a78db0f58652e895606ddba327dfe2b50cc49862[m
+Merge: 1e7c379 21e811c
+Author: Seunghu Kim <44455550+oksuman@users.noreply.github.com>
+Date:   Sat Sep 7 13:41:55 2024 +0900
+
+    Merge pull request #7 from eymay/NAF_optimal_key_amount
+    
+    NAF optimal key size of 13 reached
+
+[33mcommit 21e811c02fd032eb625ae83e00c92b27040e4b56[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Fri Sep 6 17:16:50 2024 +0300
+
+    NAF optimal key size of 13 reached
+    
+    From 256~ key size we reached a rotation key size of 13 by using NAF rotation composition
+
+[33mcommit 1e7c379d0f6f0f678489bc8e3cc54b5fdad24462[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Wed Sep 4 12:17:02 2024 +0300
+
+    Fix release mode compiler error and calibrate tests
+
+[33mcommit 225fbf7e41b2ff322b9ed9b74bfa5115dab3f9e8[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Wed Sep 4 12:07:18 2024 +0300
+
+    Precompute Chebyshev Coefficients by moving it into build time (#4)
+    
+    * Precompute Chebyshev Coefficients by moving it into build time
+    
+    * Replace EvalChebyshevSeries with EvalChebyshevSeriesPS
+
+[33mcommit 369db8724fcfb3a3b84a6d0c4719b21165db5867[m
+Author: Seunghu Kim <44455550+oksuman@users.noreply.github.com>
+Date:   Wed Sep 4 17:33:55 2024 +0900
+
+    Halve the number of sign function evaluations && admit the degree of approximated  Sinc function (#3)
+    
+    * Halve the number of sign function evaluations && admit the degree of approximated  Sinc function
+    
+    * Applied Review Comments: formatting, EvalAdd constant once
+    
+    ---------
+    
+    Co-authored-by: CryptoLabCAU <cryptolab.cau@gmail.com>
+
+[33mcommit 23aa611d0ad32229d92ac6e87e66e883a36b8a50[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Tue Sep 3 18:13:30 2024 +0300
+
+    Add sort context for submission
+
+[33mcommit e7990ed1a5e2cf98d799305a7be6e78a8204be2d[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Tue Sep 3 18:12:55 2024 +0300
+
+    Refactoring and removing dead codes
+
+[33mcommit e4776016ecfc7ef6bbcbd7b96f7abe41a76f26a4[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Tue Sep 3 11:58:55 2024 +0300
+
+    gitignore build dirs
+
+[33mcommit c8636fb5b6f9591cb0e26506733bd228af3a6dc4[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Tue Sep 3 10:31:49 2024 +0300
+
+    Benchmark for only construct rank function
+
+[33mcommit 93b48cdb7cc47ff28302ba844597c13c72a895f6[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Tue Sep 3 10:21:11 2024 +0300
+
+    Increase multi-thread perf by reducing sequential operation
+    
+    According to benchmark improves by 2%, might be negligible but still observable difference
+
+[33mcommit 5e916f46f9fb0a554196253f5412686a63626036[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Thu Aug 29 10:59:47 2024 +0300
+
+    Set WITH_NATIVEOPT to ON in CMake
+    
+    Allows better optimizations during compilation
+
+[33mcommit 247a8c087eb45d7c976c0b231d0627dd6360d11e[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Mon Sep 2 17:13:20 2024 +0300
+
+    Constant zero added that can be reused
+
+[33mcommit f0b3356367fef004ffe8a8392a7c479e6d9a93b2[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Mon Sep 2 16:00:09 2024 +0300
+
+    Increase performance with OpenMP and reducing prints
+
+[33mcommit 2a1dc999bc9122557cd57870b4af6330ce9972c0[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Mon Sep 2 15:55:18 2024 +0300
+
+    Remove constructRank v1 in place for v2
+
+[33mcommit 23832b2abb6439bed0aaa6df3e9d41002d6975c9[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Mon Sep 2 15:10:29 2024 +0300
+
+    Fix rotation keys
+
+[33mcommit 8fc8e696965a3ae1a7bdd9b5de5eafa66c6e1174[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Mon Sep 2 14:42:16 2024 +0300
+
+    Add direct sort benchmark
+
+[33mcommit cdb4fadb20885d86c3c730cd7125bdf6fe3b7463[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Mon Sep 2 13:31:56 2024 +0300
+
+    Add base sort class and propagate compile time evaluation
+
+[33mcommit d38a6cd526ac8dff266a552230e541560e77753d[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Mon Sep 2 13:30:36 2024 +0300
+
+    Add level detail to enc printing
+
+[33mcommit 943a8895f893c754d11988cd0f6bb83210494d05[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Mon Sep 2 13:30:04 2024 +0300
+
+    Direct Sort test passing fully
+
+[33mcommit 92006d06f3ead9970fa34f1efe0101a3ceeb8dfd[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Mon Sep 2 13:28:35 2024 +0300
+
+    Add compile time size N for Sinc with template
+
+[33mcommit a90cb35c9a33c41c763e9cae03374e150ba59758[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Fri Aug 30 18:27:04 2024 +0300
+
+    Add small elements test
+
+[33mcommit fcce74ef722c4402ca97ab962b8858d3ab74e861[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Fri Aug 30 18:23:43 2024 +0300
+
+    clang format bm sinc
+
+[33mcommit f8137adbc57a3187edf4a4c797d8732abfa82b4a[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Fri Aug 30 18:19:21 2024 +0300
+
+    Fix compile errors on sort test
+
+[33mcommit a1cfb1acb156357ed9fd022230cb3c92a5313961[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Fri Aug 30 17:56:43 2024 +0300
+
+    Compare test added
+
+[33mcommit 75f533b22ba60cdb5ca80080bff9f3bc15d699fe[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Fri Aug 30 17:55:44 2024 +0300
+
+    Simplified rank construct added
+
+[33mcommit 28d6e6451e03f5cf0848f6909fc8046f76ced809[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Fri Aug 30 17:53:52 2024 +0300
+
+    Comparison struct added which has the encryption object
+
+[33mcommit 90c7e08ad6e43a47e5ccdc762e000ea9f9e0e920[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Fri Aug 30 17:36:39 2024 +0300
+
+    Add encryption class for convenient debugging
+
+[33mcommit 64df04148b8d18ebbdf35b32da000e15a63569dc[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Wed Aug 28 17:39:46 2024 +0300
+
+    Refactor direct sort into functions and test
+    
+    Direct sort has several procedures such as rank construction and we want to separate them to have unit testing. It is also desired to make the implementation size independent without sacrificing performance.
+
+[33mcommit 1e4c249554c8a19a01ea1c392621accc69540e81[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Wed Aug 28 17:11:56 2024 +0300
+
+    Compare function added, can be used in new code
+
+[33mcommit bc989abeafa0a5a3a0662d5bd32f7b12fbdd15e5[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Wed Aug 28 10:11:20 2024 +0300
+
+    extract compositeSign into the comparison header
+
+[33mcommit a745678898a2f2673202d96e8b70d422d4359f8c[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Tue Aug 27 18:54:42 2024 +0300
+
+    Force release mode in cmake for submission
+
+[33mcommit 54d09a8ea8bcc73a46bcd3321ad68c9851f12995[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Tue Aug 27 18:54:27 2024 +0300
+
+    Bitonic sort algorithm in python script
+
+[33mcommit e1e52ada0e9e857df1fc83396211ed771de94355[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Tue Aug 27 18:54:10 2024 +0300
+
+    Add benchmark infra and sinc benchmark
+
+[33mcommit ee14cede883800195f042c04b9b94ae0fb6b6562[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Tue Aug 27 18:51:39 2024 +0300
+
+    New array size is smaller 2048->128
+
+[33mcommit 5d518056bba1dc5709ed8bc9aa0c8c44e9619b55[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Tue Aug 27 18:50:51 2024 +0300
+
+    Submission verification
+
+[33mcommit 25da2770d8a74ef9d68e2b828f9a58687a5f226b[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Tue Aug 27 12:02:27 2024 +0300
+
+    (WIP) Add sort test for an end-to-end test
+
+[33mcommit e26ca6ab663c24e379efc985df11c74c1fc783a3[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Tue Aug 27 11:14:51 2024 +0300
+
+    Add unittest for compositeSign
+
+[33mcommit fafbd41c88955b8f6c88f82e49a8722fa209a40b[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Tue Aug 27 11:13:53 2024 +0300
+
+    Add sinc shifted by j test for periodicity by 2048
+
+[33mcommit 25f8c3fdd065e9307f5ac9586ff927cb9c89efa7[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Mon Aug 26 13:39:01 2024 +0300
+
+    Add unittest infra and unittest for sinc
+
+[33mcommit 26f9364c0960d537997a84a2a8931546d89d8152[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Mon Aug 26 13:38:32 2024 +0300
+
+    Move sinc function into comparison.h for flexibility
+
+[33mcommit 5b2de5023e8fd1e3e4fcf0b37351e2ff63235654[m
+Author: Eymen Ünay <eymenunay@outlook.com>
+Date:   Mon Aug 26 10:44:10 2024 +0300
+
+    Clang format source files
+    
+    Possible to reproduce using `clang-format -i <source files>`
+
+[33mcommit a050ab6f2928eb654fdcc70eb94af4e1d3f8a299[m
+Author: oksuman <johndoe@example>
+Date:   Mon Aug 26 15:14:14 2024 +0900
+
+    codes for submit ver1
+
+[33mcommit a14db00b4c6b926a1241d904cede3f1ca7328004[m
+Author: hoo <44455550+oksuman@users.noreply.github.com>
+Date:   Mon Aug 26 15:09:55 2024 +0900
+
+    Initial commit
