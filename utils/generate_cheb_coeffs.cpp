@@ -95,10 +95,9 @@ void generateSelectorFunction(std::ofstream &outFile) {
 }
 
 int main() {
-    std::ofstream outFile("generated_coeffs.h");
-    outFile << "// This file is generated automatically by evaluating "
-               "coefficients of \n";
-    outFile << "// Chebyshev approximation for the given function. \n";
+    std::ofstream outFile("generated_sinc_coeffs.h");
+    outFile << "// Auto-generated Chebyshev coefficients for Sinc function\n";
+    outFile << "// Sinc: f(x) = sin(pi*N*x) / (pi*N*x)\n";
     outFile << "#include <array>\n";
     outFile << "#include <vector>\n\n";
 

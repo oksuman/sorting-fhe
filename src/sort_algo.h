@@ -11,9 +11,20 @@
 
 using namespace lbcrypto;
 
-#include "generated_coeffs.h"
+#include "generated_sinc_coeffs.h"
 #include "generated_doubled_sinc_coeffs.h"
+#include "generated_indicator_coeffs.h"
 #include "mehp24/mehp24_utils.h"
+#include "llkn22_utils.h"
+
+// Indicator function types for hybrid sorting
+enum class HybridIndicator {
+    Sinc,           // sin(pi*N*x) / (pi*N*x)
+    Gaussian,       // e^{-kx^2}
+    CKK20,          // Comparison-based (sign composition)
+    LLKN22Depth,    // LLKN22 depth-optimized (precomputed composite Chebyshev)
+    LLKN22Mult,     // LLKN22 mult-optimized (precomputed composite Chebyshev)
+};
 
 #ifdef _OPENMP
 #include <omp.h>
@@ -1384,6 +1395,226 @@ template <int N> class DirectSort : public SortBase<N> {
 
         Ciphertext<DCRTPoly> output_array =
             rotationIndexCheckHybrid2(ctx_Rank, input_array, sk);
+
+        return output_array;
+    }
+
+    // =========================================================================
+    // Generalized rotation index check with selectable indicator function
+    // =========================================================================
+    Ciphertext<DCRTPoly>
+    rotationIndexCheckWithIndicator(const Ciphertext<DCRTPoly> &ctx_Rank,
+                                    const Ciphertext<DCRTPoly> &input_array,
+                                    HybridIndicator indicatorType,
+                                    PrivateKey<DCRTPoly> sk) {
+
+        size_t maxArraySize = 256;
+        size_t num_slots;
+        size_t num_batch;
+
+        if (N > maxArraySize) {
+            num_slots = max_batch;
+            num_batch = N / maxArraySize;
+        } else {
+            num_slots = N * N;
+            num_batch = 1;
+        }
+
+        ctx_Rank->SetSlots(num_slots);
+        input_array->SetSlots(num_slots);
+
+        // For Sinc/Gaussian: scale rank by 1/N
+        // For CKK20/LLKN22: no scaling (indicatorAdv handles it internally)
+        Ciphertext<DCRTPoly> r;
+        if (indicatorType == HybridIndicator::CKK20 ||
+            indicatorType == HybridIndicator::LLKN22Depth ||
+            indicatorType == HybridIndicator::LLKN22Mult) {
+            r = ctx_Rank->Clone();
+        } else {
+            r = m_cc->EvalMult(ctx_Rank, 1.0 / N);
+        }
+
+        std::vector<std::vector<double>> subMasks(
+            num_batch, std::vector<double>(num_slots));
+
+        auto array_size = std::min(static_cast<size_t>(N), maxArraySize);
+
+        // Generate subMasks based on indicator type
+        if (indicatorType == HybridIndicator::CKK20 ||
+            indicatorType == HybridIndicator::LLKN22Depth ||
+            indicatorType == HybridIndicator::LLKN22Mult) {
+            // CKK20/LLKN22: subMasks contain integer indices (not normalized)
+#pragma omp parallel for collapse(3)
+            for (size_t b = 0; b < num_batch; b++) {
+                for (size_t i = 0; i < array_size; i++) {
+                    for (size_t j = 0; j < array_size; j++) {
+                        subMasks[b][i * array_size + j] =
+                            static_cast<double>(b * array_size + i);
+                    }
+                }
+            }
+        } else {
+            // Sinc/Gaussian: subMasks contain normalized values [0, 1)
+#pragma omp parallel for collapse(3)
+            for (size_t b = 0; b < num_batch; b++) {
+                for (size_t i = 0; i < array_size; i++) {
+                    for (size_t j = 0; j < array_size; j++) {
+                        subMasks[b][i * array_size + j] =
+                            static_cast<double>(b * array_size + i) /
+                            static_cast<double>(N);
+                    }
+                }
+            }
+        }
+
+        std::vector<Plaintext> subMaskPtxs(num_batch);
+        std::vector<Ciphertext<DCRTPoly>> rots_Rank(num_batch);
+        std::vector<Ciphertext<DCRTPoly>> rots_Input(num_batch);
+
+#pragma omp parallel sections
+        {
+#pragma omp section
+            {
+#pragma omp parallel for
+                for (size_t b = 0; b < num_batch; b++) {
+                    rots_Rank[b] = rot.rotate(r, b * maxArraySize);
+                }
+            }
+
+#pragma omp section
+            {
+#pragma omp parallel for
+                for (size_t b = 0; b < num_batch; b++) {
+                    rots_Input[b] = rot.rotate(input_array, b * maxArraySize);
+                }
+            }
+        }
+
+        std::vector<Ciphertext<DCRTPoly>> Masked(num_batch);
+
+        // CKK20 parameters
+        uint32_t dg_i = (log2(N) + 1) / 2;
+        uint32_t df_i = 2;
+
+        // Lambda to apply indicator function
+        auto applyIndicator = [&](Ciphertext<DCRTPoly> &rotationMask) {
+            switch (indicatorType) {
+            case HybridIndicator::Sinc: {
+                static const auto &sincCoeffs = selectCoefficients<N>();
+                rotationMask = m_cc->EvalChebyshevSeriesPS(
+                    rotationMask, sincCoeffs, -1, 1);
+                break;
+            }
+            case HybridIndicator::Gaussian: {
+                static const auto &gaussianCoeffs = selectGaussianCoefficients<N>();
+                rotationMask = m_cc->EvalChebyshevSeriesPS(
+                    rotationMask, gaussianCoeffs, -1, 1);
+                break;
+            }
+            case HybridIndicator::CKK20: {
+                rotationMask = mehp24::utils::indicatorAdv(
+                    rotationMask, N, dg_i, df_i);
+                break;
+            }
+            case HybridIndicator::LLKN22Depth: {
+                rotationMask = llkn22::indicatorAdvDepth<N>(m_cc, rotationMask);
+                break;
+            }
+            case HybridIndicator::LLKN22Mult: {
+                rotationMask = llkn22::indicatorAdvMult<N>(m_cc, rotationMask);
+                break;
+            }
+            }
+        };
+
+        if constexpr (N <= 256) {
+            for (size_t b = 0; b < num_batch; b++) {
+                subMaskPtxs[b] = m_cc->MakeCKKSPackedPlaintext(
+                    subMasks[b], 1, ctx_Rank->GetLevel(), nullptr, num_slots);
+
+                auto subMasked = this->getZero()->Clone();
+                subMasked->SetSlots(num_slots);
+
+                for (size_t k = 0; k < num_batch; k++) {
+                    auto rotationMask =
+                        m_cc->EvalSub(subMaskPtxs[b], rots_Rank[k]);
+
+                    applyIndicator(rotationMask);
+
+                    subMasked = m_cc->EvalAdd(
+                        subMasked, m_cc->EvalMult(rots_Input[k], rotationMask));
+                }
+
+                subMasked = sumColumnsToTarget(subMasked, N / num_batch, b, true);
+                Masked[b] = transposeColumnTarget(subMasked, N / num_batch, b, true);
+            }
+        } else if constexpr (N == 512) {
+#pragma omp parallel for num_threads(4)
+            for (size_t b = 0; b < num_batch; b++) {
+                subMaskPtxs[b] = m_cc->MakeCKKSPackedPlaintext(
+                    subMasks[b], 1, ctx_Rank->GetLevel(), nullptr, num_slots);
+
+                auto subMasked = this->getZero()->Clone();
+                subMasked->SetSlots(num_slots);
+
+                for (size_t k = 0; k < num_batch; k++) {
+                    auto rotationMask =
+                        m_cc->EvalSub(subMaskPtxs[b], rots_Rank[k]);
+
+                    applyIndicator(rotationMask);
+
+                    subMasked = m_cc->EvalAdd(
+                        subMasked, m_cc->EvalMult(rots_Input[k], rotationMask));
+                }
+
+                subMasked = sumColumnsToTarget(subMasked, N / num_batch, b, true);
+                Masked[b] = transposeColumnTarget(subMasked, N / num_batch, b, true);
+            }
+        } else if constexpr (N == 1024) {
+#pragma omp parallel for num_threads(16)
+            for (size_t b = 0; b < num_batch; b++) {
+                subMaskPtxs[b] = m_cc->MakeCKKSPackedPlaintext(
+                    subMasks[b], 1, ctx_Rank->GetLevel(), nullptr, num_slots);
+
+                auto subMasked = this->getZero()->Clone();
+                subMasked->SetSlots(num_slots);
+
+                for (size_t k = 0; k < num_batch; k++) {
+                    auto rotationMask =
+                        m_cc->EvalSub(subMaskPtxs[b], rots_Rank[k]);
+
+                    applyIndicator(rotationMask);
+
+                    subMasked = m_cc->EvalAdd(
+                        subMasked, m_cc->EvalMult(rots_Input[k], rotationMask));
+                }
+
+                subMasked = sumColumnsToTarget(subMasked, N / num_batch, b, true);
+                Masked[b] = transposeColumnTarget(subMasked, N / num_batch, b, true);
+            }
+        }
+
+        auto result = m_cc->EvalAddMany(Masked);
+        return result;
+    }
+
+    // =========================================================================
+    // Generalized sort with selectable indicator function
+    // =========================================================================
+    Ciphertext<DCRTPoly> sort_with_indicator(
+        const Ciphertext<DCRTPoly> &input_array,
+        SignFunc SignFunc, SignConfig &Cfg,
+        HybridIndicator indicatorType,
+        PrivateKey<DCRTPoly> sk) {
+
+        omp_set_nested(1);
+        omp_set_max_active_levels(2);
+
+        Ciphertext<DCRTPoly> ctx_Rank;
+        ctx_Rank = constructRank(input_array, SignFunc, Cfg);
+
+        Ciphertext<DCRTPoly> output_array =
+            rotationIndexCheckWithIndicator(ctx_Rank, input_array, indicatorType, sk);
 
         return output_array;
     }

@@ -14,11 +14,12 @@ target_link_libraries(generate_doubled_coeffs
  OpenMP::OpenMP_CXX
 )
 
-set(GENERATED_COEFFS_PATH ${CMAKE_CURRENT_BINARY_DIR}/generated_coeffs.h)
+set(GENERATED_SINC_COEFFS_PATH ${CMAKE_CURRENT_BINARY_DIR}/generated_sinc_coeffs.h)
 set(GENERATED_DOUBLED_COEFFS_PATH ${CMAKE_CURRENT_BINARY_DIR}/generated_doubled_sinc_coeffs.h)
+set(GENERATED_INDICATOR_COEFFS_PATH ${CMAKE_CURRENT_BINARY_DIR}/generated_indicator_coeffs.h)
 
 add_custom_command(
- OUTPUT ${GENERATED_COEFFS_PATH}
+ OUTPUT ${GENERATED_SINC_COEFFS_PATH}
  COMMAND ${CMAKE_COMMAND} -E echo "Running generate_coeffs in ${CMAKE_CURRENT_BINARY_DIR}"
  COMMAND $<TARGET_FILE:generate_coeffs>
  COMMAND ${CMAKE_COMMAND} -E echo "generate_coeffs completed"
@@ -37,12 +38,23 @@ add_custom_command(
  VERBATIM
 )
 
-add_custom_target(generate_coeffs_target
- DEPENDS ${GENERATED_COEFFS_PATH} ${GENERATED_DOUBLED_COEFFS_PATH}
+add_custom_command(
+ OUTPUT ${GENERATED_INDICATOR_COEFFS_PATH}
+ COMMAND ${CMAKE_COMMAND} -E echo "Running generate_indicator_coeffs in ${CMAKE_CURRENT_BINARY_DIR}"
+ COMMAND $<TARGET_FILE:generate_indicator_coeffs>
+ COMMAND ${CMAKE_COMMAND} -E echo "generate_indicator_coeffs completed"
+ WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+ DEPENDS generate_indicator_coeffs
+ VERBATIM
 )
 
-set_source_files_properties(${GENERATED_COEFFS_PATH} PROPERTIES GENERATED TRUE)
+add_custom_target(generate_coeffs_target
+ DEPENDS ${GENERATED_SINC_COEFFS_PATH} ${GENERATED_DOUBLED_COEFFS_PATH} ${GENERATED_INDICATOR_COEFFS_PATH}
+)
+
+set_source_files_properties(${GENERATED_SINC_COEFFS_PATH} PROPERTIES GENERATED TRUE)
 set_source_files_properties(${GENERATED_DOUBLED_COEFFS_PATH} PROPERTIES GENERATED TRUE)
+set_source_files_properties(${GENERATED_INDICATOR_COEFFS_PATH} PROPERTIES GENERATED TRUE)
 
 target_include_directories(src PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
 target_include_directories(DirectSortTest PRIVATE ${CMAKE_CURRENT_BINARY_DIR})

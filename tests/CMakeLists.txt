@@ -92,6 +92,25 @@ add_unit_test(DirectSortH2Test DirectSortH2Test.cpp memory_tracker.cpp
     ${CMAKE_SOURCE_DIR}/src/encryption.cpp)
 add_dependencies(DirectSortH2Test generate_coeffs_target)
 
+# Indicator comparison sorting test (standalone executable, not gtest)
+add_executable(IndicatorSortTest
+    IndicatorSortTest.cpp
+    ${CMAKE_SOURCE_DIR}/src/sign.cpp
+    ${CMAKE_SOURCE_DIR}/src/comparison.cpp
+    ${CMAKE_SOURCE_DIR}/src/encryption.cpp
+)
+add_dependencies(IndicatorSortTest generate_coeffs_target)
+target_include_directories(IndicatorSortTest PRIVATE
+    ${CMAKE_SOURCE_DIR}/src
+    ${CMAKE_SOURCE_DIR}/utils
+    ${CMAKE_BINARY_DIR}/utils
+)
+target_link_libraries(IndicatorSortTest PRIVATE
+    mehp24_lib
+    ${OpenFHE_SHARED_LIBRARIES}
+    OpenMP::OpenMP_CXX
+)
+
 add_unit_test(DirectSortNTest 
     DirectSortNTest.cpp 
     ${CMAKE_SOURCE_DIR}/src/sign.cpp
@@ -114,3 +133,4 @@ add_dependencies(KWaySortTest generate_coeffs_target)
 
 add_subdirectory(mehp24)
 add_subdirectory(k-way)
+add_subdirectory(indicators)
